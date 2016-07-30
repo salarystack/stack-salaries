@@ -48068,7 +48068,7 @@ module.exports =
 	    _this.state = {
 	      state: '',
 	      city: '',
-	      salary: null,
+	      salary: 0,
 	      education: '',
 	      gender: '',
 	      experience: '',
@@ -48081,6 +48081,7 @@ module.exports =
 	    _this.addStack = _this.addStack.bind(_this);
 	    _this.addCity = _this.addCity.bind(_this);
 	    _this.addState = _this.addState.bind(_this);
+	    _this.addSalary = _this.addSalary.bind(_this);
 	    _this.addEducation = _this.addEducation.bind(_this);
 	    _this.addExperience = _this.addExperience.bind(_this);
 	    _this.addPosition = _this.addPosition.bind(_this);
@@ -48123,6 +48124,13 @@ module.exports =
 	      });
 	    }
 	  }, {
+	    key: 'addSalary',
+	    value: function addSalary(e) {
+	      this.setState({
+	        salary: e.target.value
+	      });
+	    }
+	  }, {
 	    key: 'addPosition',
 	    value: function addPosition(e) {
 	      this.setState({
@@ -48138,6 +48146,7 @@ module.exports =
 	        state: this.state.state,
 	        education: this.state.education,
 	        experience: this.state.experience,
+	        salary: this.state.salary,
 	        position: this.state.position
 	      };
 
@@ -48156,6 +48165,7 @@ module.exports =
 	        state: this.state.state,
 	        education: this.state.education,
 	        experience: this.state.experience,
+	        salary: this.state.salary,
 	        position: this.state.position
 	      };
 
@@ -48244,6 +48254,7 @@ module.exports =
 	              addStack: this.addStack,
 	              addCity: this.addCity,
 	              addState: this.addState,
+	              addSalary: this.addSalary,
 	              addEducation: this.addEducation,
 	              addExperience: this.addExperience,
 	              addPosition: this.addPosition

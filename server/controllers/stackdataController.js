@@ -3,6 +3,7 @@ var SD = require('../models/stackdata');
 //takes the object that's sent to the server
 // and modifies it into a query for mongoose.
 var getQuery = function(query, callback){
+  console.log('queryZZZ', query)
   var clear = {}
   for(var k in query){
     if(k === 'stack' && query[k].length > 0){
@@ -21,6 +22,7 @@ var getSalary = function(query, callback){
   getQuery(query, function(results){
     SD.find(results, {salary: 1, _id : 0}).exec(function(err, results){
       if(err) return handleError(err);
+      console.log("unicorns", results);
       callback(results);
     })
   });
