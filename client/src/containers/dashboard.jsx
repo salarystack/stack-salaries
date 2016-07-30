@@ -23,7 +23,6 @@ class Dashboard extends React.Component {
       city: '',
       salary: 0,
       education: '',
-      gender: '',
       experience: '',
       stack: [],
       position:'',
@@ -75,7 +74,7 @@ class Dashboard extends React.Component {
     this.setState({
       salary: e.target.value
     });
-  }  
+  }
 
   addPosition(e) {
     this.setState({
@@ -145,12 +144,12 @@ class Dashboard extends React.Component {
             {this.props.userInfo ? (
 
         <div className="row dashboard-row center-block panel-body">
-          <h1>Welcome <span className="color">{this.props.userInfo.name}</span> to the Dashboard</h1>
+          <h1>Welcome to the Dashboard <span className="color">{window.localStorage.name}</span></h1>
 
          <div>
-              <p className="lead">Name: {this.props.userInfo.name} </p>
-              <p className="lead">Email: {this.props.userInfo.email} </p>
-              <p className="lead">Gender: {this.props.userInfo.gender} </p>
+              <p className="lead">Name: {window.localStorage.name} </p>
+              <p className="lead">Email: {window.localStorage.email} </p>
+              <p className="lead">Gender: {window.localStorage.gender} </p>
           </div>
         </div>
             ) : (
@@ -182,11 +181,11 @@ Dashboard.contextTypes = {
   router: React.PropTypes.object.isRequired
 };
 
-  function mapStateToProps(state) {
-    return {
-      userInfo: state.userInfo
-    }
+function mapStateToProps(state) {
+  return {
+    userInfo: state.userInfo
   }
+}
 
 
 function mapDispatchToProps(dispatch) {
