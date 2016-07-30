@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
     this.state = {
       state:'',
       city: '',
-      salary: null,
+      salary: 0,
       education: '',
       gender: '',
       experience: '',
@@ -35,6 +35,7 @@ class Dashboard extends React.Component {
     this.addStack = this.addStack.bind(this);
     this.addCity = this.addCity.bind(this);
     this.addState = this.addState.bind(this);
+    this.addSalary = this.addSalary.bind(this);
     this.addEducation = this.addEducation.bind(this);
     this.addExperience = this.addExperience.bind(this);
     this.addPosition = this.addPosition.bind(this);
@@ -70,6 +71,12 @@ class Dashboard extends React.Component {
     });
   }
 
+  addSalary(e) {
+    this.setState({
+      salary: e.target.value
+    });
+  }  
+
   addPosition(e) {
     this.setState({
       position:e.target.value
@@ -84,6 +91,7 @@ class Dashboard extends React.Component {
       state:this.state.state,
       education:this.state.education,
       experience:this.state.experience,
+      salary:this.state.salary,
       position:this.state.position
     };
 
@@ -101,6 +109,7 @@ class Dashboard extends React.Component {
       state:this.state.state,
       education:this.state.education,
       experience:this.state.experience,
+      salary:this.state.salary,
       position:this.state.position
     };
 
@@ -157,6 +166,7 @@ class Dashboard extends React.Component {
             addStack = {this.addStack}
             addCity = {this.addCity}
             addState = {this.addState}
+            addSalary = {this.addSalary}
             addEducation = {this.addEducation}
             addExperience = {this.addExperience}
             addPosition = {this.addPosition}
