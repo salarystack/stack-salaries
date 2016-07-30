@@ -19,7 +19,7 @@ import LoginForm from './containers/login-form';
 import Search from './containers/search';
 import Results from './containers/results';
 import AdvancedSearch from './containers/advanced-search';
-
+import Premium from './containers/premium';
 // The react router renders components based on
 // desired path
 export default (
@@ -52,6 +52,10 @@ export default (
 
     <Route path="logout">
       <IndexRoute component={Logout} />
+    </Route>
+
+    <Route path="premium">
+      <IndexRoute component={Premium} />
     </Route>
 
   </Route>
