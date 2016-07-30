@@ -71,7 +71,7 @@
 
 	var _router2 = _interopRequireDefault(_router);
 
-	var _combine = __webpack_require__(278);
+	var _combine = __webpack_require__(280);
 
 	var _combine2 = _interopRequireDefault(_combine);
 
@@ -27056,17 +27056,17 @@
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
+	var _premium = __webpack_require__(278);
+
+	var _premium2 = _interopRequireDefault(_premium);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// The react router renders components based on
 	// desired path
 
 
-	// Import all containers
-
-
-	// Import all actions & helper methods
-	// Import all required modules
+	// Import all components
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _mainLayout2.default },
@@ -27105,10 +27105,19 @@
 	    _reactRouter.Route,
 	    { path: 'logout' },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _logout2.default })
+	  ),
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: 'premium' },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _premium2.default })
 	  )
 	);
 
-	// Import all components
+	// Import all containers
+
+
+	// Import all actions & helper methods
+	// Import all required modules
 
 /***/ },
 /* 250 */
@@ -48197,6 +48206,17 @@
 	              _react2.default.createElement(_login2.default, { loggedIn: this.state.loggedIn, userInfo: this.props.userInfo })
 	            ),
 	            _react2.default.createElement(_main2.default, null),
+	            _react2.default.createElement(
+	              'button',
+	              null,
+	              ' Come visit our new website! ',
+	              _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/premium' },
+	                'premium'
+	              ),
+	              ' '
+	            ),
 	            _react2.default.createElement(_search2.default, { history: this.props.history }),
 	            _react2.default.createElement(_cloud2.default, null)
 	          )
@@ -49394,17 +49414,164 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _jquery = __webpack_require__(257);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _reactRouter = __webpack_require__(188);
+
+	var _reactFileInput = __webpack_require__(279);
+
+	var _reactFileInput2 = _interopRequireDefault(_reactFileInput);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // Import all required modules
+
+
+	var Premium = function (_React$Component) {
+	  _inherits(Premium, _React$Component);
+
+	  function Premium(props) {
+	    _classCallCheck(this, Premium);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Premium).call(this, props));
+	  }
+
+	  _createClass(Premium, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(
+	          'button',
+	          null,
+	          'Resume + Recruiter'
+	        ),
+	        _react2.default.createElement(
+	          'form',
+	          null,
+	          _react2.default.createElement(_reactFileInput2.default, { name: 'myImage',
+	            accept: '.png,.gif',
+	            placeholder: 'My Image',
+	            className: 'inputClass',
+	            onChange: this.handleChange })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Premium;
+	}(_react2.default.Component);
+
+	exports.default = Premium;
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(2);
+
+	var FileInput = React.createClass({
+	  getInitialState: function() {
+	    return {
+	      value: '',
+	      styles: {
+	        parent: {
+	          position: 'relative'
+	        },
+	        file: {
+	          position: 'absolute',
+	          top: 0,
+	          left: 0,
+	          opacity: 0,
+	          width: '100%',
+	          zIndex: 1
+	        },
+	        text: {
+	          position: 'relative',
+	          zIndex: -1
+	        }
+	      }
+	    };
+	  },
+
+	  handleChange: function(e) {
+	    this.setState({
+	      value: e.target.value.split(/(\\|\/)/g).pop()
+	    });
+	    if (this.props.onChange) this.props.onChange(e);
+	  },
+
+	  render: function() {
+	    return React.DOM.div({
+	        style: this.state.styles.parent
+	      },
+
+	      // Actual file input
+	      React.DOM.input({
+	        type: 'file',
+	        name: this.props.name,
+	        className: this.props.className,
+	        onChange: this.handleChange,
+	        disabled: this.props.disabled,
+	        accept: this.props.accept,
+	        style: this.state.styles.file
+	      }),
+
+	      // Emulated file input
+	      React.DOM.input({
+	        type: 'text',
+	        tabIndex: -1,
+	        name: this.props.name + '_filename',
+	        value: this.state.value,
+	        className: this.props.className,
+	        onChange: function() {},
+	        placeholder: this.props.placeholder,
+	        disabled: this.props.disabled,
+	        style: this.state.styles.text
+	      }));
+	  }
+	});
+
+	module.exports = FileInput;
+
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _redux = __webpack_require__(167);
 
-	var _searchReducer = __webpack_require__(279);
+	var _searchReducer = __webpack_require__(281);
 
 	var _searchReducer2 = _interopRequireDefault(_searchReducer);
 
-	var _userInfoReducer = __webpack_require__(280);
+	var _userInfoReducer = __webpack_require__(282);
 
 	var _userInfoReducer2 = _interopRequireDefault(_userInfoReducer);
 
-	var _cityStateReducer = __webpack_require__(281);
+	var _cityStateReducer = __webpack_require__(283);
 
 	var _cityStateReducer2 = _interopRequireDefault(_cityStateReducer);
 
@@ -49423,7 +49590,7 @@
 	exports.default = rootReducer;
 
 /***/ },
-/* 279 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49446,7 +49613,7 @@
 	var _actionCreator = __webpack_require__(258);
 
 /***/ },
-/* 280 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49469,7 +49636,7 @@
 	var _actionCreator = __webpack_require__(258);
 
 /***/ },
-/* 281 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

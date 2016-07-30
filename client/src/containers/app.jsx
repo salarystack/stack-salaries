@@ -35,7 +35,7 @@ class App extends React.Component {
             <Login loggedIn={this.state.loggedIn} userInfo={this.props.userInfo}/>
           </nav>
           <Main/>
-
+          <button> Come visit our new website! <Link to='/premium'>premium</Link> </button>
           <Search history={this.props.history}/>
           <Cloud/>
 
