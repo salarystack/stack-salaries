@@ -65,7 +65,7 @@ var Rect = React.createClass({
       var y = this.props.height - height + this.props.y;
         return (
           <rect className="bar"
-                height={height}
+                height={height>=0? height:0}
                 y={y}
                 width={this.props.width}
                 x={this.props.x}
@@ -95,7 +95,7 @@ var Bar = React.createClass({
     });
 
     var yScale = d3.scale.linear()
-      .domain([0, 200000])
+      .domain([0, 2000000])
       .range([0, this.props.height]);
 
     var xScale = d3.scale.ordinal()
@@ -103,6 +103,7 @@ var Bar = React.createClass({
       .rangeRoundBands([0, this.props.width], 0.05);
 
     var bars = data.map(function(point, i) {
+      point = (point === null)? 0: point;
       var height = yScale(point),
           y = props.height - height,
           width = xScale.rangeBand(),
@@ -119,7 +120,7 @@ var Bar = React.createClass({
         textAnchor='middle'
         fontFamily='Helvetica Neue'
         fontSize="20"
-        >{'$' + point}</text>
+        >{'$' + point.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</text>
         <text y={580} x={x + 77}
         textAnchor='middle'
         fontFamily='Helvetica Neue'

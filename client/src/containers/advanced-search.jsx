@@ -18,13 +18,13 @@ class AdvancedSearch extends React.Component{
   constructor() {
     super();
     this.state = {
-      stack: [],
+      stack: '',
       city: "",
       state: "",
       education: "",
       gender: "",
       experience: "",
-      salary: {},
+      salary: 0,
       loggedIn: loggedIn()
     };
 
