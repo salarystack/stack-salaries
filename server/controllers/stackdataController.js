@@ -7,9 +7,11 @@ var getQuery = function(query, callback){
   var clear = {}
   for(var k in query){
     if(k === 'stack' && query[k].length > 0){
-      clear['stack'] = {$all: query[k]};
+      if(query[k][0] !== '') clear['stack'] = {$in: query[k]};
+      else continue;
     } else if (query[k] && query[k].length > 0){
-      clear[k] = query[k];
+      if(query[k] !== '') clear[k] = query[k];
+      else continue;
     }
   }
   console.log(clear);
@@ -79,12 +81,12 @@ var calculateSalary = function(query, callback){
 exports.querySalary = function(query, callback){
   calculateSalary(query, function(result){
     if(result.average !== 0){
-      var title = 'Salaries for';
-      if (Array.isArray(query.stack)){
-        for (var s of query.stack){
-          title += ' ' + s.charAt(0).toUpperCase() + s.slice(1);
-        }
-      }
+      var title = 'Salaries for ' + query.stack; console.log(query.stack)
+      // if (Array.isArray(query.stack)){
+      //   for (var s of query.stack){
+      //     title += ' ' + s.charAt(0).toUpperCase() + s.slice(1);
+      //   }
+      // }
       if (query.city){
         var cityName = query.city.split(' ');
         var cityNameUpper = [];

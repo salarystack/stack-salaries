@@ -37726,9 +37726,9 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Search).call(this));
 
 	    _this.state = {
-	      stack: [],
+	      stack: '',
 	      cityState: "",
-	      salary: {}
+	      salary: 0
 	    };
 
 	    _this.getDatafromServer = _this.getDatafromServer.bind(_this);
@@ -37869,7 +37869,7 @@
 	        className: 'city form-control',
 	        value: props.cityState,
 	        onChange: props.findCityState,
-	        placeholder: 'New York, NY'
+	        placeholder: 'City, State'
 	      }),
 	      _react2.default.createElement(
 	        'button',
@@ -37992,7 +37992,7 @@
 	    var height = this.state.height + (this.props.height - this.state.height) * easyeasy(Math.min(1, this.state.milliseconds / 1000));
 	    var y = this.props.height - height + this.props.y;
 	    return _react2.default.createElement('rect', { className: 'bar',
-	      height: height,
+	      height: height >= 0 ? height : 0,
 	      y: y,
 	      width: this.props.width,
 	      x: this.props.x
@@ -38021,11 +38021,12 @@
 	      return d.y;
 	    });
 
-	    var yScale = _d2.default.scale.linear().domain([0, 200000]).range([0, this.props.height]);
+	    var yScale = _d2.default.scale.linear().domain([0, 2000000]).range([0, this.props.height]);
 
 	    var xScale = _d2.default.scale.ordinal().domain(_d2.default.range(this.props.data.length)).rangeRoundBands([0, this.props.width], 0.05);
 
 	    var bars = data.map(function (point, i) {
+	      point = point === null ? 0 : point;
 	      var height = yScale(point),
 	          y = props.height - height,
 	          width = xScale.rangeBand(),
@@ -38046,7 +38047,7 @@
 	            fontFamily: 'Helvetica Neue',
 	            fontSize: '20'
 	          },
-	          '$' + point
+	          '$' + point.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 	        ),
 	        _react2.default.createElement(
 	          'text',
@@ -47773,13 +47774,13 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AdvancedSearch).call(this));
 
 	    _this.state = {
-	      stack: [],
+	      stack: '',
 	      city: "",
 	      state: "",
 	      education: "",
 	      gender: "",
 	      experience: "",
-	      salary: {},
+	      salary: 0,
 	      loggedIn: (0, _auth.loggedIn)()
 	    };
 
@@ -48382,7 +48383,7 @@
 	      salary: 0,
 	      education: '',
 	      experience: '',
-	      stack: [],
+	      stack: '',
 	      position: '',
 	      loggedIn: (0, _auth.loggedIn)()
 	    };
@@ -48451,7 +48452,7 @@
 	    key: 'submitToStore',
 	    value: function submitToStore() {
 	      var data = {
-	        stack: this.state.stack,
+	        stack: this.state.stack.toString().split(','),
 	        city: this.state.city,
 	        state: this.state.state,
 	        education: this.state.education,
@@ -48470,7 +48471,7 @@
 	      var self = this;
 
 	      var data = {
-	        stack: this.state.stack,
+	        stack: this.state.stack.toString().split(','),
 	        city: this.state.city,
 	        state: this.state.state,
 	        education: this.state.education,
