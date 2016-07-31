@@ -67,6 +67,7 @@
     "react-file-input": "^0.2.5",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
+    "react-script-loader": "0.0.1",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-store": "0.0.0",

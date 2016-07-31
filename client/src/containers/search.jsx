@@ -16,9 +16,9 @@ class Search extends React.Component{
   constructor() {
     super();
     this.state = {
-      stack: [],
+      stack: '',
       cityState: "",
-      salary: {},
+      salary: 0,
     };
 
       this.getDatafromServer = this.getDatafromServer.bind(this);

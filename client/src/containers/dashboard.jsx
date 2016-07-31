@@ -24,7 +24,7 @@ class Dashboard extends React.Component {
       salary: 0,
       education: '',
       experience: '',
-      stack: [],
+      stack: '',
       position:'',
       loggedIn: loggedIn()
     };
@@ -85,7 +85,7 @@ class Dashboard extends React.Component {
 
   submitToStore() {
     var data = {
-      stack: this.state.stack,
+      stack: this.state.stack.toString().split(','),
       city: this.state.city,
       state:this.state.state,
       education:this.state.education,
@@ -103,7 +103,7 @@ class Dashboard extends React.Component {
     var self = this;
 
     var data = {
-      stack: this.state.stack,
+      stack: this.state.stack.toString().split(','),
       city: this.state.city,
       state:this.state.state,
       education:this.state.education,

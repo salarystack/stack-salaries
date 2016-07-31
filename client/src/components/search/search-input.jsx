@@ -21,7 +21,7 @@ var SearchInput = (props) => (
         className="city form-control"
         value={props.cityState}
         onChange={props.findCityState}
-        placeholder="New York, NY"
+        placeholder="City, State"
       />
 
       <button className="btn btn-primary">Search</button>
