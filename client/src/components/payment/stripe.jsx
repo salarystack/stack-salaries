@@ -2,17 +2,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var React = require('react');
 var ReactScriptLoaderMixin = require('react-script-loader').ReactScriptLoaderMixin;
 var ReactStripeCheckout = React.createClass({
+
   displayName: 'ReactStripeCheckout',
   mixins: [ReactScriptLoaderMixin],
   getDefaultProps: function getDefaultProps() {
+    const toggled = this.props;
+    console.log('props are ', this.props);
     return {
       className: 'StripeCheckout',
-      label: 'Pay With Card',
+      label: 'Enroll Now!',
       locale: 'auto',
       componentClass: 'span',
       amount: 999,
       stripeKey: 'pk_test_HptasCYTzhXEBApEOJjf6Z7N',
-      token: function(tok){console.log(tok)},
+      token: function(tok){ console.log(tok, 'submitted');},
       name: "Stack Salaries",
       description: "Premium Resume+Recruiter Service",
       image: 'https://s32.postimg.org/6pmuws9lh/i_Mac_icon.png',
@@ -146,6 +149,7 @@ var ReactStripeCheckout = React.createClass({
     }
   },
   updateStripeHandler: function updateStripeHandler() {
+    console.log("what is update stripe props", this.props)
     if (!ReactStripeCheckout.stripeHandler || !!this.props.reconfigureOnUpdate) {
       ReactStripeCheckout.stripeHandler = StripeCheckout.configure(this.getConfig());
     }
@@ -170,7 +174,7 @@ var ReactStripeCheckout = React.createClass({
     this.props.hideLoadingDialog && this.props.hideLoadingDialog.apply(this, arguments);
   },
   getConfig: function getConfig() {
-    console.log(this.props)
+    console.log("config props",this.props.toggled)
     var config = {};
     config.key = this.props.stripeKey;
     var options = ['token', 'image', 'name', 'description', 'amount', 'locale', 'currency', 'panelLabel', 'zipCode', 'shippingAddress', 'billingAddress', 'email', 'allowRememberMe', 'bitcoin', 'alipay', 'alipayReusable', 'opened', 'closed'];

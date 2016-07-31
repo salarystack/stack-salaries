@@ -74,11 +74,11 @@ module.exports =
 
 	var _stats2 = _interopRequireDefault(_stats);
 
-	var _logout = __webpack_require__(266);
+	var _logout = __webpack_require__(264);
 
 	var _logout2 = _interopRequireDefault(_logout);
 
-	var _app = __webpack_require__(267);
+	var _app = __webpack_require__(265);
 
 	var _app2 = _interopRequireDefault(_app);
 
@@ -86,31 +86,31 @@ module.exports =
 
 	var _jobs2 = _interopRequireDefault(_jobs);
 
-	var _dashboard = __webpack_require__(270);
+	var _dashboard = __webpack_require__(268);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _signupForm = __webpack_require__(273);
+	var _signupForm = __webpack_require__(271);
 
 	var _signupForm2 = _interopRequireDefault(_signupForm);
 
-	var _loginForm = __webpack_require__(275);
+	var _loginForm = __webpack_require__(273);
 
 	var _loginForm2 = _interopRequireDefault(_loginForm);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _results = __webpack_require__(262);
+	var _results = __webpack_require__(260);
 
 	var _results2 = _interopRequireDefault(_results);
 
-	var _advancedSearch = __webpack_require__(264);
+	var _advancedSearch = __webpack_require__(262);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
-	var _premium = __webpack_require__(277);
+	var _premium = __webpack_require__(275);
 
 	var _premium2 = _interopRequireDefault(_premium);
 
@@ -25301,15 +25301,15 @@ module.exports =
 
 	var _jobs2 = _interopRequireDefault(_jobs);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _results = __webpack_require__(262);
+	var _results = __webpack_require__(260);
 
 	var _results2 = _interopRequireDefault(_results);
 
-	var _advancedSearch = __webpack_require__(264);
+	var _advancedSearch = __webpack_require__(262);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
@@ -25670,13 +25670,13 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _jobsList = __webpack_require__(258);
+	var _jobsList = __webpack_require__(256);
 
 	var _jobsList2 = _interopRequireDefault(_jobsList);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -35779,11 +35779,11 @@ module.exports =
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(255);
+	var _hoistNonReactStatics = __webpack_require__(201);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(256);
+	var _invariant = __webpack_require__(166);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -37233,121 +37233,6 @@ module.exports =
 /* 255 */
 /***/ function(module, exports) {
 
-	/**
-	 * Copyright 2015, Yahoo! Inc.
-	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-	 */
-	'use strict';
-
-	var REACT_STATICS = {
-	    childContextTypes: true,
-	    contextTypes: true,
-	    defaultProps: true,
-	    displayName: true,
-	    getDefaultProps: true,
-	    mixins: true,
-	    propTypes: true,
-	    type: true
-	};
-
-	var KNOWN_STATICS = {
-	    name: true,
-	    length: true,
-	    prototype: true,
-	    caller: true,
-	    arguments: true,
-	    arity: true
-	};
-
-	var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
-
-	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
-	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-	        var keys = Object.getOwnPropertyNames(sourceComponent);
-
-	        /* istanbul ignore else */
-	        if (isGetOwnPropertySymbolsAvailable) {
-	            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
-	        }
-
-	        for (var i = 0; i < keys.length; ++i) {
-	            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
-	                try {
-	                    targetComponent[keys[i]] = sourceComponent[keys[i]];
-	                } catch (error) {
-
-	                }
-	            }
-	        }
-	    }
-
-	    return targetComponent;
-	};
-
-
-/***/ },
-/* 256 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-
-	'use strict';
-
-	/**
-	 * Use invariant() to assert state which your program assumes to be true.
-	 *
-	 * Provide sprintf-style format (only %s is supported) and arguments
-	 * to provide information about what broke and what you were
-	 * expecting.
-	 *
-	 * The invariant message will be stripped in production, but the invariant
-	 * will remain to ensure logic does not differ in production.
-	 */
-
-	var NODE_ENV = process.env.NODE_ENV;
-
-	var invariant = function(condition, format, a, b, c, d, e, f) {
-	  if (NODE_ENV !== 'production') {
-	    if (format === undefined) {
-	      throw new Error('invariant requires an error message argument');
-	    }
-	  }
-
-	  if (!condition) {
-	    var error;
-	    if (format === undefined) {
-	      error = new Error(
-	        'Minified exception occurred; use the non-minified dev environment ' +
-	        'for the full error message and additional helpful warnings.'
-	      );
-	    } else {
-	      var args = [a, b, c, d, e, f];
-	      var argIndex = 0;
-	      error = new Error(
-	        format.replace(/%s/g, function() { return args[argIndex++]; })
-	      );
-	      error.name = 'Invariant Violation';
-	    }
-
-	    error.framesToPop = 1; // we don't care about invariant's own frame
-	    throw error;
-	  }
-	};
-
-	module.exports = invariant;
-
-
-/***/ },
-/* 257 */
-/***/ function(module, exports) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -37385,7 +37270,7 @@ module.exports =
 	}
 
 /***/ },
-/* 258 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37398,7 +37283,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _jobsItem = __webpack_require__(259);
+	var _jobsItem = __webpack_require__(257);
 
 	var _jobsItem2 = _interopRequireDefault(_jobsItem);
 
@@ -37420,7 +37305,7 @@ module.exports =
 	exports.default = JobsList;
 
 /***/ },
-/* 259 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37496,7 +37381,7 @@ module.exports =
 	exports.default = JobsItem;
 
 /***/ },
-/* 260 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37521,9 +37406,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _searchInput = __webpack_require__(261);
+	var _searchInput = __webpack_require__(259);
 
 	var _searchInput2 = _interopRequireDefault(_searchInput);
 
@@ -37656,7 +37541,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Search);
 
 /***/ },
-/* 261 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37708,7 +37593,7 @@ module.exports =
 	exports.default = SearchInput;
 
 /***/ },
-/* 262 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37723,7 +37608,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _d = __webpack_require__(263);
+	var _d = __webpack_require__(261);
 
 	var _d2 = _interopRequireDefault(_d);
 
@@ -37733,9 +37618,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -37978,7 +37863,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Results);
 
 /***/ },
-/* 263 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -47537,7 +47422,7 @@ module.exports =
 	}();
 
 /***/ },
-/* 264 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47562,11 +47447,11 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
 	var _auth = __webpack_require__(221);
 
-	var _advanceSearchInput = __webpack_require__(265);
+	var _advanceSearchInput = __webpack_require__(263);
 
 	var _advanceSearchInput2 = _interopRequireDefault(_advanceSearchInput);
 
@@ -47758,7 +47643,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AdvancedSearch);
 
 /***/ },
-/* 265 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47882,7 +47767,7 @@ module.exports =
 	exports.default = AdvancedSearchInput;
 
 /***/ },
-/* 266 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47941,7 +47826,7 @@ module.exports =
 	exports.default = Logout;
 
 /***/ },
-/* 267 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47964,21 +47849,21 @@ module.exports =
 
 	var _auth = __webpack_require__(221);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
 	var _login = __webpack_require__(224);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _main = __webpack_require__(268);
+	var _main = __webpack_require__(266);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _cloud = __webpack_require__(269);
+	var _cloud = __webpack_require__(267);
 
 	var _cloud2 = _interopRequireDefault(_cloud);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -48072,7 +47957,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
 /***/ },
-/* 268 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48111,7 +47996,7 @@ module.exports =
 	exports.default = Main;
 
 /***/ },
-/* 269 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48137,7 +48022,7 @@ module.exports =
 	exports.default = Cloud;
 
 /***/ },
-/* 270 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48162,15 +48047,15 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
 	var _auth = __webpack_require__(221);
 
-	var _flash = __webpack_require__(271);
+	var _flash = __webpack_require__(269);
 
 	var _flash2 = _interopRequireDefault(_flash);
 
-	var _dashboardDataInput = __webpack_require__(272);
+	var _dashboardDataInput = __webpack_require__(270);
 
 	var _dashboardDataInput2 = _interopRequireDefault(_dashboardDataInput);
 
@@ -48419,7 +48304,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Dashboard);
 
 /***/ },
-/* 271 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48477,7 +48362,7 @@ module.exports =
 	exports.default = Flash;
 
 /***/ },
-/* 272 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48624,7 +48509,7 @@ module.exports =
 	exports.default = DataInput;
 
 /***/ },
-/* 273 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48649,9 +48534,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _signupInput = __webpack_require__(274);
+	var _signupInput = __webpack_require__(272);
 
 	var _signupInput2 = _interopRequireDefault(_signupInput);
 
@@ -48779,7 +48664,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignForm);
 
 /***/ },
-/* 274 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48921,7 +48806,7 @@ module.exports =
 	exports.default = SignupInput;
 
 /***/ },
-/* 275 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48946,13 +48831,13 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _flash = __webpack_require__(271);
+	var _flash = __webpack_require__(269);
 
 	var _flash2 = _interopRequireDefault(_flash);
 
-	var _loginInput = __webpack_require__(276);
+	var _loginInput = __webpack_require__(274);
 
 	var _loginInput2 = _interopRequireDefault(_loginInput);
 
@@ -48960,7 +48845,7 @@ module.exports =
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _advancedSearch = __webpack_require__(264);
+	var _advancedSearch = __webpack_require__(262);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
@@ -49112,7 +48997,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 /***/ },
-/* 276 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49229,7 +49114,7 @@ module.exports =
 	exports.default = LoginInput;
 
 /***/ },
-/* 277 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49250,9 +49135,13 @@ module.exports =
 
 	var _reactRouter = __webpack_require__(158);
 
-	var _reactFileInput = __webpack_require__(278);
+	var _reactFileInput = __webpack_require__(276);
 
 	var _reactFileInput2 = _interopRequireDefault(_reactFileInput);
+
+	var _stripe = __webpack_require__(277);
+
+	var _stripe2 = _interopRequireDefault(_stripe);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49269,17 +49158,17 @@ module.exports =
 	  function Premium(props) {
 	    _classCallCheck(this, Premium);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Premium).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Premium).call(this, props));
+
+	    _this.state = { clicked: false };
+	    return _this;
 	  }
 
 	  _createClass(Premium, [{
-	    key: 'toggle',
-	    value: function toggle() {
-	      (0, _jquery2.default)(".resumeBtn").unbind('click').click(function () {
-	        (0, _jquery2.default)(".recruiterBox").toggle(function () {
-	          console.log('toggled');
-	        });
-	      });
+	    key: 'toggled',
+	    value: function toggled() {
+	      console.log('toggled');
+	      this.setState({ clicked: !this.state.clicked });
 	    }
 	  }, {
 	    key: 'contactRecruiter',
@@ -49290,25 +49179,43 @@ module.exports =
 	      window.open("mailto:" + email + "?subject=" + subj + "&body=" + message, "_self");
 	    }
 	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {}
-	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
+	        _react2.default.createElement('nav', { id: 'resultNav', className: 'navbar navbar-default navbar-fixed-top' }),
 	        _react2.default.createElement(
 	          'h1',
 	          null,
 	          ' Premium Content '
 	        ),
 	        _react2.default.createElement(
-	          'button',
-	          { className: 'resumeBtn btn btn-default', onClick: this.toggle.bind(this) },
-	          'Resume + Recruiter'
+	          'p',
+	          null,
+	          ' We match top talent with the world\'s most innovative companies. '
 	        ),
 	        _react2.default.createElement(
+	          'p',
+	          null,
+	          ' We\'ve helped thousands of people find their dream jobs. '
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-secondary' },
+	          ' ',
+	          _react2.default.createElement(
+	            _stripe2.default,
+	            { token: function token() {
+	                return _this2.setState({ clicked: !_this2.state.clicked });
+	              } },
+	            'Pay'
+	          ),
+	          ' '
+	        ),
+	        this.state.clicked ? _react2.default.createElement(
 	          'div',
 	          { className: 'recruiterBox panel panel-default' },
 	          _react2.default.createElement(
@@ -49333,7 +49240,7 @@ module.exports =
 	              ' Contact Recruiter '
 	            )
 	          )
-	        )
+	        ) : null
 	      );
 	    }
 	  }]);
@@ -49344,7 +49251,7 @@ module.exports =
 	exports.default = Premium;
 
 /***/ },
-/* 278 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
@@ -49412,6 +49319,363 @@ module.exports =
 	});
 
 	module.exports = FileInput;
+
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+	var React = __webpack_require__(2);
+	var ReactScriptLoaderMixin = __webpack_require__(278).ReactScriptLoaderMixin;
+	var ReactStripeCheckout = React.createClass({
+
+	  displayName: 'ReactStripeCheckout',
+	  mixins: [ReactScriptLoaderMixin],
+	  getDefaultProps: function getDefaultProps() {
+	    var toggled = this.props;
+	    console.log('props are ', this.props);
+	    return {
+	      className: 'StripeCheckout',
+	      label: 'Enroll Now!',
+	      locale: 'auto',
+	      componentClass: 'span',
+	      amount: 999,
+	      stripeKey: 'pk_test_HptasCYTzhXEBApEOJjf6Z7N',
+	      token: function token(tok) {
+	        console.log(tok, 'submitted');
+	      },
+	      name: "Stack Salaries",
+	      description: "Premium Resume+Recruiter Service",
+	      image: 'https://s32.postimg.org/6pmuws9lh/i_Mac_icon.png',
+	      allowRememberMe: false
+	    };
+	  },
+	  propTypes: {
+	    // If included, will render the default blue button with label text.
+	    // (Requires including stripe-checkout.css or adding the .styl file
+	    // to your pipeline)
+	    label: React.PropTypes.string,
+	    // Named component to wrap button (eg. div)
+	    componentClass: React.PropTypes.string,
+	    // Show a loading indicator
+	    showLoadingDialog: React.PropTypes.func,
+	    // Hide the loading indicator
+	    hideLoadingDialog: React.PropTypes.func,
+	    // Run this method when the scrupt fails to load. Will run if the internet
+	    // connection is offline when attemting to load the script.
+	    onScriptError: React.PropTypes.func,
+	    // By default, any time the React component is updated, it will call
+	    // StripeCheckout.configure, which may result in additional XHR calls to the
+	    // stripe API.  If you know the first configuration is all you need, you
+	    // can set this to false.  Subsequent updates will affect the StripeCheckout.open
+	    // (e.g. different prices)
+	    reconfigureOnUpdate: React.PropTypes.bool,
+	    // =====================================================
+	    // Required by stripe
+	    // see Stripe docs for more info:
+	    //   https://stripe.com/docs/checkout#integration-custom
+	    // =====================================================
+	    // Your publishable key (test or live).
+	    // can't use "key" as a prop in react, so have to change the keyname
+	    stripeKey: React.PropTypes.string.isRequired,
+	    // The callback to invoke when the Checkout process is complete.
+	    //   function(token)
+	    //     token is the token object created.
+	    //     token.id can be used to create a charge or customer.
+	    //     token.email contains the email address entered by the user.
+	    token: React.PropTypes.func.isRequired,
+	    // ==========================
+	    // Highly Recommended Options
+	    // ==========================
+	    // Name of the company or website.
+	    name: React.PropTypes.string,
+	    // A description of the product or service being purchased.
+	    description: React.PropTypes.string,
+	    // A relative URL pointing to a square image of your brand or product. The
+	    // recommended minimum size is 128x128px. The recommended image types are
+	    // .gif, .jpeg, and .png.
+	    image: React.PropTypes.string,
+	    // The amount (in cents) that's shown to the user. Note that you will still
+	    // have to explicitly include it when you create a charge using the API.
+	    amount: React.PropTypes.number,
+	    // Specify auto to display Checkout in the user's preferred language, if
+	    // available. English will be used by default.
+	    //
+	    // https://support.stripe.com/questions/what-languages-does-stripe-checkout-support
+	    // for more info.
+	    locale: React.PropTypes.oneOf(['auto', // (Default) Automatically chosen by checkout
+	    'zh', //Chinese
+	    'nl', //Dutch
+	    'en', //English
+	    'fr', //French
+	    'de', //German
+	    'it', //Italian
+	    'jp', //Japanease
+	    'es' //Spanish
+	    ]),
+	    // ==============
+	    // Optional Props
+	    // ==============
+	    // The currency of the amount (3-letter ISO code). The default is USD.
+	    currency: React.PropTypes.oneOf(['AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AUD', 'AWG', 'AZN', 'BAM', 'BBD', 'BDT', 'BGN', 'BIF', 'BMD', 'BND', 'BOB', 'BRL', 'BSD', 'BWP', 'BZD', 'CAD', 'CDF', 'CHF', 'CLP', 'CNY', 'COP', 'CRC', 'CVE', 'CZK', 'DJF', 'DKK', 'DOP', 'DZD', 'EEK', 'EGP', 'ETB', 'EUR', 'FJD', 'FKP', 'GBP', 'GEL', 'GIP', 'GMD', 'GNF', 'GTQ', 'GYD', 'HKD', 'HNL', 'HRK', 'HTG', 'HUF', 'IDR', 'ILS', 'INR', 'ISK', 'JMD', 'JPY', 'KES', 'KGS', 'KHR', 'KMF', 'KRW', 'KYD', 'KZT', 'LAK', 'LBP', 'LKR', 'LRD', 'LSL', 'LTL', 'LVL', 'MAD', 'MDL', 'MGA', 'MKD', 'MNT', 'MOP', 'MRO', 'MUR', 'MVR', 'MWK', 'MXN', 'MYR', 'MZN', 'NAD', 'NGN', 'NIO', 'NOK', 'NPR', 'NZD', 'PAB', 'PEN', 'PGK', 'PHP', 'PKR', 'PLN', 'PYG', 'QAR', 'RON', 'RSD', 'RUB', 'RWF', 'SAR', 'SBD', 'SCR', 'SEK', 'SGD', 'SHP', 'SLL', 'SOS', 'SRD', 'STD', 'SVC', 'SZL', 'THB', 'TJS', 'TOP', 'TRY', 'TTD', 'TWD', 'TZS', 'UAH', 'UGX', 'USD', 'UYU', 'UZS', 'VND', 'VUV', 'WST', 'XAF', 'XCD', 'XOF', 'XPF', 'YER', 'ZAR', 'ZMW']),
+	    // The label of the payment button in the Checkout form (e.g. “Subscribe”,
+	    // “Pay {{amount}}”, etc.). If you include {{amount}}, it will be replaced
+	    // by the provided amount. Otherwise, the amount will be appended to the
+	    // end of your label.
+	    panelLabel: React.PropTypes.string,
+	    // Specify whether Checkout should validate the billing ZIP code (true or
+	    // false)
+	    zipCode: React.PropTypes.bool,
+	    // Specify whether Checkout should collect the user's billing address
+	    // (true or false). The default is false.
+	    billingAddress: React.PropTypes.bool,
+	    // Specify whether Checkout should collect the user's shipping address
+	    // (true or false). The default is false.
+	    shippingAddress: React.PropTypes.bool,
+	    // Specify whether Checkout should validate the billing ZIP code (true or
+	    // false). The default is false.
+	    email: React.PropTypes.string,
+	    // Specify whether to include the option to "Remember Me" for future
+	    // purchases (true or false). The default is true.
+	    allowRememberMe: React.PropTypes.bool,
+	    // Specify whether to accept Bitcoin in Checkout. The default is false.
+	    bitcoin: React.PropTypes.bool,
+	    // Specify whether to accept Alipay ('auto', true, or false). The default
+	    // is false.
+	    alipay: React.PropTypes.oneOf(['auto', true, false]),
+	    // Specify if you need reusable access to the customer's Alipay account
+	    // (true or false). The default is false.
+	    alipayReusable: React.PropTypes.bool,
+	    // function() The callback to invoke when Checkout is opened (not supported
+	    // in IE6 and IE7).
+	    opened: React.PropTypes.func,
+	    // function() The callback to invoke when Checkout is closed (not supported
+	    // in IE6 and IE7).
+	    closed: React.PropTypes.func
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      scriptLoading: true,
+	      scriptLoadError: false
+	    };
+	  },
+	  // Used by scriptLoader mixin
+	  getScriptURL: function getScriptURL() {
+	    return 'https://checkout.stripe.com/checkout.js';
+	  },
+	  statics: {
+	    stripeHandler: null,
+	    scriptDidError: false
+	  },
+	  hasPendingClick: false,
+	  onScriptLoaded: function onScriptLoaded() {
+	    this.setState({ scriptLoading: false });
+	    // Initialize the Stripe handler on the first onScriptLoaded call.
+	    // This handler is shared by all StripeButtons on the page.
+	    if (!ReactStripeCheckout.stripeHandler) {
+	      this.updateStripeHandler();
+	    }
+	  },
+	  updateStripeHandler: function updateStripeHandler() {
+	    console.log("what is update stripe props", this.props);
+	    if (!ReactStripeCheckout.stripeHandler || !!this.props.reconfigureOnUpdate) {
+	      ReactStripeCheckout.stripeHandler = StripeCheckout.configure(this.getConfig());
+	    }
+	    if (this.hasPendingClick) {
+	      this.showStripeDialog();
+	    }
+	  },
+	  componentDidUpdate: function componentDidUpdate() {
+	    if (!this.state.scriptLoading) {
+	      this.updateStripeHandler();
+	    }
+	  },
+	  componentWillUnmount: function componentWillUnmount() {
+	    if (ReactStripeCheckout.stripeHandler) {
+	      ReactStripeCheckout.stripeHandler.close();
+	    }
+	  },
+	  showLoadingDialog: function showLoadingDialog() {
+	    this.props.showLoadingDialog && this.props.showLoadingDialog.apply(this, arguments);
+	  },
+	  hideLoadingDialog: function hideLoadingDialog() {
+	    this.props.hideLoadingDialog && this.props.hideLoadingDialog.apply(this, arguments);
+	  },
+	  getConfig: function getConfig() {
+	    console.log("config props", this.props.toggled);
+	    var config = {};
+	    config.key = this.props.stripeKey;
+	    var options = ['token', 'image', 'name', 'description', 'amount', 'locale', 'currency', 'panelLabel', 'zipCode', 'shippingAddress', 'billingAddress', 'email', 'allowRememberMe', 'bitcoin', 'alipay', 'alipayReusable', 'opened', 'closed'];
+	    for (var i = 0; i < options.length; i++) {
+	      var key = options[i];
+	      if (key in this.props) {
+	        config[key] = this.props[key];
+	      }
+	    }
+	    return config;
+	  },
+	  showStripeDialog: function showStripeDialog() {
+	    this.hideLoadingDialog();
+	    ReactStripeCheckout.stripeHandler.open(this.getConfig());
+	  },
+	  onScriptError: function onScriptError() {
+	    this.hideLoadingDialog();
+	    ReactStripeCheckout.scriptDidError = true;
+	    this.props.onScriptError && this.props.onScriptError.apply(this);
+	  },
+	  onClick: function onClick() {
+	    if (ReactStripeCheckout.scriptDidError) {
+	      console.log('failed to load script');
+	    } else if (ReactStripeCheckout.stripeHandler) {
+	      this.showStripeDialog();
+	    } else {
+	      this.showLoadingDialog();
+	      this.hasPendingClick = true;
+	    }
+	  },
+	  renderStripeButton: function renderStripeButton() {
+	    return React.createElement('button', { className: 'stripe-checkout-button', onClick: this.onClick }, React.createElement('span', { className: 'inner-text' }, this.props.label));
+	  },
+	  render: function render() {
+	    var ComponentClass = this.props.componentClass;
+	    return !this.props.children ? this.renderStripeButton() : React.createElement(ComponentClass, _extends({}, this.props, { onClick: this.onClick }), this.props.children);
+	  }
+	});
+	module.exports = ReactStripeCheckout;
+
+/***/ },
+/* 278 */
+/***/ function(module, exports) {
+
+	
+	// A dictionary mapping script URLs to a dictionary mapping
+	// component key to component for all components that are waiting
+	// for the script to load.
+	var scriptObservers = {};
+
+	// A dictionary mapping script URL to a boolean value indicating if the script
+	// has already been loaded.
+	var loadedScripts = {};
+
+	// A dictionary mapping script URL to a boolean value indicating if the script
+	// has failed to load.
+	var erroredScripts = {};
+
+	// A counter used to generate a unique id for each component that uses
+	// ScriptLoaderMixin.
+	var idCount = 0;
+
+	var ReactScriptLoader = {
+		componentDidMount: function(key, component, scriptURL) {
+			if (typeof component.onScriptLoaded !== 'function') {
+				throw new Error('ScriptLoader: Component class must implement onScriptLoaded()');
+			}
+			if (typeof component.onScriptError !== 'function') {
+				throw new Error('ScriptLoader: Component class must implement onScriptError()');
+			}
+			if (loadedScripts[scriptURL]) {
+				component.onScriptLoaded();
+				return;
+			}
+			if (erroredScripts[scriptURL]) {
+				component.onScriptError();
+				return;
+			}
+
+			// If the script is loading, add the component to the script's observers
+			// and return. Otherwise, initialize the script's observers with the component
+			// and start loading the script.
+			if (scriptObservers[scriptURL]) {
+				scriptObservers[scriptURL][key] = component;
+				return;
+			}
+
+			var observers = {};
+			observers[key] = component;
+			scriptObservers[scriptURL] = observers;
+
+			var script = document.createElement('script');
+			script.src = scriptURL;
+
+			var callObserverFuncAndRemoveObserver = function(func) {
+				var observers = scriptObservers[scriptURL];
+				for (var key in observers) {
+					observer = observers[key];
+					var removeObserver = func(observer);
+					if (removeObserver) {
+						delete scriptObservers[scriptURL][key];
+					}
+				}
+				//delete scriptObservers[scriptURL];
+			}
+			script.onload = function() {
+				loadedScripts[scriptURL] = true;
+				callObserverFuncAndRemoveObserver(function(observer) {
+					if (observer.deferOnScriptLoaded && observer.deferOnScriptLoaded()) {
+						return false;
+					}
+					observer.onScriptLoaded();
+					return true;
+				});
+			};
+			script.onerror = function(event) {
+				erroredScripts[scriptURL] = true;
+				callObserverFuncAndRemoveObserver(function(observer) {
+					observer.onScriptError();
+					return true;
+				});
+			};
+			document.body.appendChild(script);
+		},
+		componentWillUnmount: function(key, scriptURL) {
+			// If the component is waiting for the script to load, remove the
+			// component from the script's observers before unmounting the component.
+			var observers = scriptObservers[scriptURL];
+			if (observers) {
+				delete observers[key];
+			}
+		},
+		triggerOnScriptLoaded: function(scriptURL) {
+			if (!loadedScripts[scriptURL]) {
+				throw new Error('Error: only call this function after the script has in fact loaded.');
+			}
+			var observers = scriptObservers[scriptURL];
+			for (var key in observers) {
+				var observer = observers[key];
+				observer.onScriptLoaded();
+			}
+			delete scriptObservers[scriptURL];
+		}
+	};
+
+	var ReactScriptLoaderMixin = {
+		componentDidMount: function() {
+			if (typeof this.getScriptURL !== 'function') {
+				throw new Error("ScriptLoaderMixin: Component class must implement getScriptURL().")
+			}
+			ReactScriptLoader.componentDidMount(this.__getScriptLoaderID(), this, this.getScriptURL());
+		},
+		componentWillUnmount: function() {
+			ReactScriptLoader.componentWillUnmount(this.__getScriptLoaderID(), this.getScriptURL());
+		},
+		__getScriptLoaderID: function() {
+			return 'id' + idCount++;
+		},
+	};
+
+	exports.ReactScriptLoaderMixin = ReactScriptLoaderMixin;
+	exports.ReactScriptLoader = ReactScriptLoader;
 
 
 /***/ }
