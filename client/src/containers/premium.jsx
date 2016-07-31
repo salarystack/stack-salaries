@@ -35,7 +35,7 @@ class Premium extends React.Component {
         <p> We match top talent with the world's most innovative companies. </p>
         <p> We've helped thousands of people find their dream jobs. </p>
 
-        <ReactStripeCheckout token={() => this.setState({clicked: !this.state.clicked})}>Pay</ReactStripeCheckout>
+        <button className="btn btn-secondary"> <ReactStripeCheckout token={() => this.setState({clicked: !this.state.clicked})}>Pay</ReactStripeCheckout> </button>
 
         {this.state.clicked ?
         <div className="recruiterBox panel panel-default">

@@ -49203,11 +49203,17 @@ module.exports =
 	          ' We\'ve helped thousands of people find their dream jobs. '
 	        ),
 	        _react2.default.createElement(
-	          _stripe2.default,
-	          { token: function token() {
-	              return _this2.setState({ clicked: !_this2.state.clicked });
-	            } },
-	          'Pay'
+	          'button',
+	          { className: 'btn btn-secondary' },
+	          ' ',
+	          _react2.default.createElement(
+	            _stripe2.default,
+	            { token: function token() {
+	                return _this2.setState({ clicked: !_this2.state.clicked });
+	              } },
+	            'Pay'
+	          ),
+	          ' '
 	        ),
 	        this.state.clicked ? _react2.default.createElement(
 	          'div',
