@@ -3,19 +3,18 @@ import React from 'react';
 import $ from 'jquery';
 import { History, Router } from 'react-router';
 import FileInput from 'react-file-input';
+import ReactStripeCheckout from '../components/payment/stripe.jsx';
 
 class Premium extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {clicked: false};
   }
 
-  toggle(){
-    $(".resumeBtn").unbind('click').click(function() {
-      $(".recruiterBox").toggle(function() {
-        console.log('toggled');
-      });
-    });
+  toggled() {
+    console.log('toggled');
+    this.setState({clicked: !this.state.clicked});
   }
 
   contactRecruiter(){
@@ -25,19 +24,20 @@ class Premium extends React.Component {
     window.open("mailto:" + email + "?subject=" + subj + "&body=" + message, "_self");
   };
 
-
-  componentWillMount(){
-  }
-
   render() {
     return (
 
       <div className="row">
-
+      <nav id="resultNav" className="navbar navbar-default navbar-fixed-top">
+      </nav>
         <h1> Premium Content </h1>
 
-        <button className="resumeBtn btn btn-default" onClick={this.toggle.bind(this)}>Resume + Recruiter</button>
+        <p> We match top talent with the world's most innovative companies. </p>
+        <p> We've helped thousands of people find their dream jobs. </p>
 
+        <ReactStripeCheckout token={() => this.setState({clicked: !this.state.clicked})}>Pay</ReactStripeCheckout>
+
+        {this.state.clicked ?
         <div className="recruiterBox panel panel-default">
         <div className="panel-body">
 
@@ -54,7 +54,9 @@ class Premium extends React.Component {
          <button className="btn btn-default" onClick={this.contactRecruiter.bind(this)} > Contact Recruiter </button>
 
         </div>
-        </div>
+        </div> : null
+        }
+
       </div>
     );
   }

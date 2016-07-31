@@ -1,0 +1,262 @@
+Searching 70 files for "stripe"
+
+/Users/Jeff/Desktop/HackReactor/stack-salaries/client/src/components/payment/stripe.jsx:
+    2  var React = require('react');
+    3  var ReactScriptLoaderMixin = require('react-script-loader').ReactScriptLoaderMixin;
+    4: var ReactStripeCheckout = React.createClass({
+    5:   displayName: 'ReactStripeCheckout',
+    6    mixins: [ReactScriptLoaderMixin],
+    7    getDefaultProps: function getDefaultProps() {
+    8      return {
+    9:       className: 'StripeCheckout',
+   10        label: 'Pay With Card',
+   11        locale: 'auto',
+   12        componentClass: 'span',
+   13        amount: 999,
+   14:       stripeKey: 'pk_test_HptasCYTzhXEBApEOJjf6Z7N',
+   15        token: function(tok){console.log(tok)},
+   16        name: "Stack Salaries",
+   ..
+   22    propTypes: {
+   23      // If included, will render the default blue button with label text.
+   24:     // (Requires including stripe-checkout.css or adding the .styl file
+   25      // to your pipeline)
+   26      label: React.PropTypes.string,
+   ..
+   35      onScriptError: React.PropTypes.func,
+   36      // By default, any time the React component is updated, it will call
+   37:     // StripeCheckout.configure, which may result in additional XHR calls to the
+   38:     // stripe API.  If you know the first configuration is all you need, you
+   39:     // can set this to false.  Subsequent updates will affect the StripeCheckout.open
+   40      // (e.g. different prices)
+   41      reconfigureOnUpdate: React.PropTypes.bool,
+   42      // =====================================================
+   43:     // Required by stripe
+   44:     // see Stripe docs for more info:
+   45:     //   https://stripe.com/docs/checkout#integration-custom
+   46      // =====================================================
+   47      // Your publishable key (test or live).
+   48      // can't use "key" as a prop in react, so have to change the keyname
+   49:     stripeKey: React.PropTypes.string.isRequired,
+   50      // The callback to invoke when the Checkout process is complete.
+   51      //   function(token)
+   ..
+   71      // available. English will be used by default.
+   72      //
+   73:     // https://support.stripe.com/questions/what-languages-does-stripe-checkout-support
+   74      // for more info.
+   75      locale: React.PropTypes.oneOf(['auto', // (Default) Automatically chosen by checkout
+   ..
+  131    // Used by scriptLoader mixin
+  132    getScriptURL: function getScriptURL() {
+  133:     return 'https://checkout.stripe.com/checkout.js';
+  134    },
+  135    statics: {
+  136:     stripeHandler: null,
+  137      scriptDidError: false
+  138    },
+  ...
+  140    onScriptLoaded: function onScriptLoaded() {
+  141      this.setState({ scriptLoading: false });
+  142:     // Initialize the Stripe handler on the first onScriptLoaded call.
+  143:     // This handler is shared by all StripeButtons on the page.
+  144:     if (!ReactStripeCheckout.stripeHandler) {
+  145:       this.updateStripeHandler();
+  146      }
+  147    },
+  148:   updateStripeHandler: function updateStripeHandler() {
+  149:     if (!ReactStripeCheckout.stripeHandler || !!this.props.reconfigureOnUpdate) {
+  150:       ReactStripeCheckout.stripeHandler = StripeCheckout.configure(this.getConfig());
+  151      }
+  152      if (this.hasPendingClick) {
+  153:       this.showStripeDialog();
+  154      }
+  155    },
+  156    componentDidUpdate: function componentDidUpdate() {
+  157      if (!this.state.scriptLoading) {
+  158:       this.updateStripeHandler();
+  159      }
+  160    },
+  161    componentWillUnmount: function componentWillUnmount() {
+  162:     if (ReactStripeCheckout.stripeHandler) {
+  163:       ReactStripeCheckout.stripeHandler.close();
+  164      }
+  165    },
+  ...
+  173      console.log(this.props)
+  174      var config = {};
+  175:     config.key = this.props.stripeKey;
+  176      var options = ['token', 'image', 'name', 'description', 'amount', 'locale', 'currency', 'panelLabel', 'zipCode', 'shippingAddress', 'billingAddress', 'email', 'allowRememberMe', 'bitcoin', 'alipay', 'alipayReusable', 'opened', 'closed'];
+  177      for (var i = 0; i < options.length; i++) {
+  ...
+  183      return config;
+  184    },
+  185:   showStripeDialog: function showStripeDialog() {
+  186      this.hideLoadingDialog();
+  187:     ReactStripeCheckout.stripeHandler.open(this.getConfig());
+  188    },
+  189    onScriptError: function onScriptError() {
+  190      this.hideLoadingDialog();
+  191:     ReactStripeCheckout.scriptDidError = true;
+  192      this.props.onScriptError && this.props.onScriptError.apply(this);
+  193    },
+  194    onClick: function onClick() {
+  195:     if (ReactStripeCheckout.scriptDidError) {
+  196        console.log('failed to load script');
+  197:     } else if (ReactStripeCheckout.stripeHandler) {
+  198:       this.showStripeDialog();
+  199      } else {
+  200        this.showLoadingDialog();
+  ...
+  202      }
+  203    },
+  204:   renderStripeButton: function renderStripeButton() {
+  205      return React.createElement(
+  206        'button',
+  207:       { className: 'stripe-checkout-button', onClick: this.onClick },
+  208        React.createElement(
+  209          'span',
+  ...
+  215    render: function render() {
+  216      var ComponentClass = this.props.componentClass;
+  217:     return !this.props.children ? this.renderStripeButton() : React.createElement(
+  218        ComponentClass,
+  219        _extends({}, this.props, { onClick: this.onClick }),
+  ...
+  222    }
+  223  });
+  224: module.exports = ReactStripeCheckout;
+
+49 matches in 1 file
+
+
+Searching 70 files for "stripe"
+
+/Users/Jeff/Desktop/HackReactor/stack-salaries/client/src/components/payment/stripe.jsx:
+    2  var React = require('react');
+    3  var ReactScriptLoaderMixin = require('react-script-loader').ReactScriptLoaderMixin;
+    4: var ReactStripeCheckout = React.createClass({
+    5:   displayName: 'ReactStripeCheckout',
+    6    mixins: [ReactScriptLoaderMixin],
+    7    getDefaultProps: function getDefaultProps() {
+    8      return {
+    9:       className: 'StripeCheckout',
+   10        label: 'Pay With Card',
+   11        locale: 'auto',
+   12        componentClass: 'span',
+   13        amount: 999,
+   14:       stripeKey: 'pk_test_HptasCYTzhXEBApEOJjf6Z7N',
+   15        token: function(tok){console.log(tok)},
+   16        name: "Stack Salaries",
+   ..
+   22    propTypes: {
+   23      // If included, will render the default blue button with label text.
+   24:     // (Requires including stripe-checkout.css or adding the .styl file
+   25      // to your pipeline)
+   26      label: React.PropTypes.string,
+   ..
+   35      onScriptError: React.PropTypes.func,
+   36      // By default, any time the React component is updated, it will call
+   37:     // StripeCheckout.configure, which may result in additional XHR calls to the
+   38:     // stripe API.  If you know the first configuration is all you need, you
+   39:     // can set this to false.  Subsequent updates will affect the StripeCheckout.open
+   40      // (e.g. different prices)
+   41      reconfigureOnUpdate: React.PropTypes.bool,
+   42      // =====================================================
+   43:     // Required by stripe
+   44:     // see Stripe docs for more info:
+   45:     //   https://stripe.com/docs/checkout#integration-custom
+   46      // =====================================================
+   47      // Your publishable key (test or live).
+   48      // can't use "key" as a prop in react, so have to change the keyname
+   49:     stripeKey: React.PropTypes.string.isRequired,
+   50      // The callback to invoke when the Checkout process is complete.
+   51      //   function(token)
+   ..
+   71      // available. English will be used by default.
+   72      //
+   73:     // https://support.stripe.com/questions/what-languages-does-stripe-checkout-support
+   74      // for more info.
+   75      locale: React.PropTypes.oneOf(['auto', // (Default) Automatically chosen by checkout
+   ..
+  131    // Used by scriptLoader mixin
+  132    getScriptURL: function getScriptURL() {
+  133:     return 'https://checkout.stripe.com/checkout.js';
+  134    },
+  135    statics: {
+  136:     stripeHandler: null,
+  137      scriptDidError: false
+  138    },
+  ...
+  140    onScriptLoaded: function onScriptLoaded() {
+  141      this.setState({ scriptLoading: false });
+  142:     // Initialize the Stripe handler on the first onScriptLoaded call.
+  143:     // This handler is shared by all StripeButtons on the page.
+  144:     if (!ReactStripeCheckout.stripeHandler) {
+  145:       this.updateStripeHandler();
+  146      }
+  147    },
+  148:   updateStripeHandler: function updateStripeHandler() {
+  149:     if (!ReactStripeCheckout.stripeHandler || !!this.props.reconfigureOnUpdate) {
+  150:       ReactStripeCheckout.stripeHandler = StripeCheckout.configure(this.getConfig());
+  151      }
+  152      if (this.hasPendingClick) {
+  153:       this.showStripeDialog();
+  154      }
+  155    },
+  156    componentDidUpdate: function componentDidUpdate() {
+  157      if (!this.state.scriptLoading) {
+  158:       this.updateStripeHandler();
+  159      }
+  160    },
+  161    componentWillUnmount: function componentWillUnmount() {
+  162:     if (ReactStripeCheckout.stripeHandler) {
+  163:       ReactStripeCheckout.stripeHandler.close();
+  164      }
+  165    },
+  ...
+  173      console.log(this.props)
+  174      var config = {};
+  175:     config.key = this.props.stripeKey;
+  176      var options = ['token', 'image', 'name', 'description', 'amount', 'locale', 'currency', 'panelLabel', 'zipCode', 'shippingAddress', 'billingAddress', 'email', 'allowRememberMe', 'bitcoin', 'alipay', 'alipayReusable', 'opened', 'closed'];
+  177      for (var i = 0; i < options.length; i++) {
+  ...
+  183      return config;
+  184    },
+  185:   showStripeDialog: function showStripeDialog() {
+  186      this.hideLoadingDialog();
+  187:     ReactStripeCheckout.stripeHandler.open(this.getConfig());
+  188    },
+  189    onScriptError: function onScriptError() {
+  190      this.hideLoadingDialog();
+  191:     ReactStripeCheckout.scriptDidError = true;
+  192      this.props.onScriptError && this.props.onScriptError.apply(this);
+  193    },
+  194    onClick: function onClick() {
+  195:     if (ReactStripeCheckout.scriptDidError) {
+  196        console.log('failed to load script');
+  197:     } else if (ReactStripeCheckout.stripeHandler) {
+  198:       this.showStripeDialog();
+  199      } else {
+  200        this.showLoadingDialog();
+  ...
+  202      }
+  203    },
+  204:   renderStripeButton: function renderStripeButton() {
+  205      return React.createElement(
+  206        'button',
+  207:       { className: 'stripe-checkout-button', onClick: this.onClick },
+  208        React.createElement(
+  209          'span',
+  ...
+  215    render: function render() {
+  216      var ComponentClass = this.props.componentClass;
+  217:     return !this.props.children ? this.renderStripeButton() : React.createElement(
+  218        ComponentClass,
+  219        _extends({}, this.props, { onClick: this.onClick }),
+  ...
+  222    }
+  223  });
+  224: module.exports = ReactStripeCheckout;
+
+49 matches in 1 file
