@@ -16,7 +16,7 @@ class Premium extends React.Component {
     console.log('toggled');
     this.setState({clicked: !this.state.clicked});
   }
-
+  //send email to recruiter
   contactRecruiter(){
     var email = "RecruiterSujin@gmail.com"
     var subj = "Inquiry regarding ";
