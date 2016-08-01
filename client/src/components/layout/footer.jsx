@@ -12,7 +12,7 @@ const Footer = React.createClass({
              <li><Link to='/team'>Team Mewtwo</Link></li>
              <li><Link to='/contact'>Contact</Link></li>
           </ul>
-          <p className="lead">&copy; 2016 Salary Stack</p>
+          <p className="lead">&copy; 2016 Stack Salary</p>
         </div>
       </div>
     );

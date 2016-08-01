@@ -27293,7 +27293,7 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'lead' },
-	          '© 2016 Salary Stack'
+	          '© 2016 Stack Salary'
 	        )
 	      )
 	    );
@@ -50142,7 +50142,7 @@
 	      _react2.default.createElement(
 	        "h1",
 	        { className: "feature" },
-	        "About Salary Stack"
+	        "About Stack Salary"
 	      ),
 	      _react2.default.createElement(
 	        "p",
