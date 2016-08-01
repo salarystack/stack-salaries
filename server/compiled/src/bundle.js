@@ -48042,17 +48042,6 @@ module.exports =
 	              _react2.default.createElement(_login2.default, { loggedIn: this.state.loggedIn, userInfo: this.props.userInfo })
 	            ),
 	            _react2.default.createElement(_main2.default, null),
-	            _react2.default.createElement(
-	              'button',
-	              null,
-	              ' Come visit our new website! ',
-	              _react2.default.createElement(
-	                _reactRouter.Link,
-	                { to: '/premium' },
-	                'premium'
-	              ),
-	              ' '
-	            ),
 	            _react2.default.createElement(_search2.default, { history: this.props.history }),
 	            _react2.default.createElement(_cloud2.default, null)
 	          )
@@ -49343,9 +49332,16 @@ module.exports =
 	          null,
 	          ' We\'ve helped thousands of people find their dream jobs. '
 	        ),
+	        _react2.default.createElement(_reactFileInput2.default, {
+	          name: 'myImage',
+	          accept: '.docx,.jpg',
+	          placeholder: 'Upload asdfasdf',
+	          className: 'inputClass',
+	          onChange: this.handleChange,
+	          styles: { zIndex: 99999 } }),
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'btn btn-secondary' },
+	          { className: 'btn btn-default' },
 	          ' ',
 	          _react2.default.createElement(
 	            _stripe2.default,
@@ -49362,11 +49358,17 @@ module.exports =
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'panel-body' },
-	            _react2.default.createElement(_reactFileInput2.default, { name: 'myImage',
-	              accept: '.docx,.jpg',
-	              placeholder: 'Upload Resume',
-	              className: 'inputClass',
-	              onChange: this.handleChange }),
+	            _react2.default.createElement(
+	              'form',
+	              null,
+	              _react2.default.createElement(_reactFileInput2.default, {
+	                name: 'myImage',
+	                accept: '.docx,.jpg',
+	                placeholder: 'Upload asdfasdf',
+	                className: 'inputClass',
+	                onChange: this.handleChange,
+	                style: { zIndex: 99999 } })
+	            ),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('img', { className: 'media-object img-circle', src: 'https://s.gravatar.com/avatar/cc2623f773bcdd3b6b8765c33f1ec5a1?s=200' }),
 	            _react2.default.createElement('br', null),
