@@ -20270,10 +20270,10 @@ module.exports =
 	  };
 	}
 
-	var CompiledPatternsCache = {};
+	var CompiledPatternsCache = Object.create(null);
 
 	function compilePattern(pattern) {
-	  if (!(pattern in CompiledPatternsCache)) CompiledPatternsCache[pattern] = _compilePattern(pattern);
+	  if (!CompiledPatternsCache[pattern]) CompiledPatternsCache[pattern] = _compilePattern(pattern);
 
 	  return CompiledPatternsCache[pattern];
 	}
@@ -22506,6 +22506,7 @@ module.exports =
 	}
 
 	//export default useRoutes
+
 	module.exports = exports['default'];
 
 /***/ },
@@ -49202,9 +49203,26 @@ module.exports =
 	          _react2.default.createElement(_logo2.default, { loggedIn: this.state.loggedIn })
 	        ),
 	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          ' Premium Content '
+	          'div',
+	          { className: 'row under-nav' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'gray-box panel panel-default' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'row dashboard-row center-block panel-body' },
+	              _react2.default.createElement(
+	                'h1',
+	                null,
+	                'Welcome to the Job Search ',
+	                _react2.default.createElement(
+	                  'span',
+	                  { className: 'color' },
+	                  window.localStorage.name
+	                )
+	              )
+	            )
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'p',
@@ -49216,6 +49234,7 @@ module.exports =
 	          null,
 	          ' We\'ve helped thousands of people find their dream jobs. '
 	        ),
+	        _react2.default.createElement('img', { className: 'recruitImg', src: 'http://i.imgur.com/jtVH5QF.png' }),
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'btn btn-default' },
@@ -49225,38 +49244,37 @@ module.exports =
 	            { token: function token() {
 	                return _this2.setState({ clicked: !_this2.state.clicked });
 	              } },
-	            'Pay'
+	            'Join us today!'
 	          ),
 	          ' '
 	        ),
+	        _react2.default.createElement('br', null),
 	        this.state.clicked ? _react2.default.createElement(
 	          'div',
 	          { className: 'recruiterBox panel panel-default' },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'panel-body' },
-	            _react2.default.createElement(
-	              'form',
-	              null,
-	              _react2.default.createElement(_reactFileInput2.default, {
-	                name: 'myImage',
-	                accept: '.docx,.jpg',
-	                placeholder: 'Upload asdfasdf',
-	                className: 'inputClass',
-	                onChange: this.handleChange })
-	            ),
 	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('img', { className: 'media-object img-circle', src: 'https://s.gravatar.com/avatar/cc2623f773bcdd3b6b8765c33f1ec5a1?s=200' }),
-	            _react2.default.createElement('br', null),
+	            _react2.default.createElement('img', { className: 'recruiterPic media-object img-circle', src: 'https://s.gravatar.com/avatar/cc2623f773bcdd3b6b8765c33f1ec5a1?s=200' }),
 	            _react2.default.createElement(
 	              'p',
-	              null,
-	              ' Hi, my name is Sujin and I have over 10 years of experience as a technical recruiter.  I look forward to working with you! '
+	              { className: 'text-center' },
+	              ' Hi, my name is Sujin and I have over 10 years of experience ',
+	              _react2.default.createElement('br', null),
+	              ' as a technical recruiter.  I look forward to working with you! '
 	            ),
+	            _react2.default.createElement('img', { className: 'recruitImgTwo', src: 'http://i.imgur.com/VpBGZco.png' }),
+	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'button',
 	              { className: 'btn btn-default', onClick: this.contactRecruiter.bind(this) },
 	              ' Contact Recruiter '
+	            ),
+	            _react2.default.createElement(
+	              'input',
+	              { type: 'file' },
+	              ' '
 	            )
 	          )
 	        ) : null
@@ -49369,7 +49387,7 @@ module.exports =
 	      label: 'Enroll Now!',
 	      locale: 'auto',
 	      componentClass: 'span',
-	      amount: 999,
+	      amount: 9999,
 	      stripeKey: 'pk_test_HptasCYTzhXEBApEOJjf6Z7N',
 	      token: function token(tok) {
 	        console.log(tok, 'submitted');

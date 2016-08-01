@@ -13,7 +13,7 @@ var ReactStripeCheckout = React.createClass({
       label: 'Enroll Now!',
       locale: 'auto',
       componentClass: 'span',
-      amount: 999,
+      amount: 9999,
       stripeKey: 'pk_test_HptasCYTzhXEBApEOJjf6Z7N',
       token: function(tok){ console.log(tok, 'submitted');},
       name: "Stack Salaries",
