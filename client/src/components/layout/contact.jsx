@@ -9,8 +9,21 @@ const Contact = React.createClass({
         <form>
           <div className="form-group">
             <div className="input-group">
-              <input type="text" />
+              <input type="text" className="form-control" placeholder="Name" />
             </div>
+          </div>
+          <div className="form-group">
+            <div className="input-group">
+              <input type="email" className="form-control" placeholder="Email" />
+            </div>
+          </div>
+          <div className="form-group">
+            <div className="input-group">
+              <textarea className="form-control" rows="4" defaultValue="Write message here..." />
+            </div>
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-default">Send</button>
           </div>
         </form>
       </div>
