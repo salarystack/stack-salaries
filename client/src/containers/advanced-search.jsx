@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 // Import all actions & helper methods
-import { setSearch } from '../actions/actionCreator';
+import { setSearch, setCityState } from '../actions/actionCreator';
 import { loggedIn } from '../auth/auth';
 
 // Import all needed components
@@ -19,8 +19,7 @@ class AdvancedSearch extends React.Component{
     super();
     this.state = {
       stack: '',
-      city: "",
-      state: "",
+      cityState: "",
       education: "",
       gender: "",
       experience: "",
@@ -31,22 +30,15 @@ class AdvancedSearch extends React.Component{
     // Assign bindings to avoid cluttering the render method
     this.GetAdvancedSearchData = this.GetAdvancedSearchData.bind(this);
     this.findStack = this.findStack.bind(this);
-    this.findCity = this.findCity.bind(this);
-    this.findState = this.findState.bind(this);
+    this.findCityState = this.findCityState.bind(this);
     this.findEducation = this.findEducation.bind(this);
     this.findGender = this.findGender.bind(this);
     this.findExperience = this.findExperience.bind(this);
   }
 
-  findCity(e) {
+  findCityState(e) {
     this.setState({
-      city:e.target.value.toLowerCase()
-    });
-  }
-
-  findState(e) {
-    this.setState({
-      state:e.target.value.toLowerCase()
+      cityState:e.target.value.toLowerCase()
     });
   }
 
@@ -83,11 +75,12 @@ class AdvancedSearch extends React.Component{
     e.preventDefault();
 
     var self = this;
+    var cityState = document.getElementById("advancedSearchTextField").value.toLowerCase().split(", ");
 
     var data = {
       stack: this.state.stack,
-      city: this.state.city,
-      state:this.state.state,
+      city: cityState[0],
+      state: cityState[1],
       education: this.state.education,
       gender:this.state.gender,
       experience:this.state.experience
@@ -101,6 +94,11 @@ class AdvancedSearch extends React.Component{
       success: function(results) {
         self.setState({
           salary: results
+        });
+        self.props.setCityState({
+          stack: self.state.stack,
+          cityForJob: cityState[0],
+          stateForJob: cityState[1]
         });
         self.redirectToResults(results);
       },
@@ -125,8 +123,7 @@ class AdvancedSearch extends React.Component{
             <AdvancedSearchInput
               GetAdvancedSearchData={this.GetAdvancedSearchData}
               findStack={this.findStack}
-              findCity={this.findCity}
-              findState={this.findState}
+              findCityState={this.findCityState}
               findEducation={this.findEducation}
               findGender={this.findGender}
               findExperience={this.findExperience}
@@ -150,7 +147,7 @@ AdvancedSearch.contextTypes= {
   }
 
   function mapDispatchToProps(dispatch) {
-    return bindActionCreators({setSearch: setSearch}, dispatch);
+    return bindActionCreators({setSearch: setSearch, setCityState: setCityState}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdvancedSearch);

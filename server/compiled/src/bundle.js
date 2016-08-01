@@ -37704,7 +37704,7 @@ module.exports =
 	      _react2.default.createElement('input', {
 	        type: 'text',
 	        id: 'searchTextField',
-	        className: 'city form-control',
+	        className: 'city form-control searchTextField',
 	        value: props.cityState,
 	        onChange: props.findCityState,
 	        placeholder: 'City, State'
@@ -47613,8 +47613,7 @@ module.exports =
 
 	    _this.state = {
 	      stack: '',
-	      city: "",
-	      state: "",
+	      cityState: "",
 	      education: "",
 	      gender: "",
 	      experience: "",
@@ -47625,8 +47624,7 @@ module.exports =
 	    // Assign bindings to avoid cluttering the render method
 	    _this.GetAdvancedSearchData = _this.GetAdvancedSearchData.bind(_this);
 	    _this.findStack = _this.findStack.bind(_this);
-	    _this.findCity = _this.findCity.bind(_this);
-	    _this.findState = _this.findState.bind(_this);
+	    _this.findCityState = _this.findCityState.bind(_this);
 	    _this.findEducation = _this.findEducation.bind(_this);
 	    _this.findGender = _this.findGender.bind(_this);
 	    _this.findExperience = _this.findExperience.bind(_this);
@@ -47634,17 +47632,10 @@ module.exports =
 	  }
 
 	  _createClass(AdvancedSearch, [{
-	    key: 'findCity',
-	    value: function findCity(e) {
+	    key: 'findCityState',
+	    value: function findCityState(e) {
 	      this.setState({
-	        city: e.target.value.toLowerCase()
-	      });
-	    }
-	  }, {
-	    key: 'findState',
-	    value: function findState(e) {
-	      this.setState({
-	        state: e.target.value.toLowerCase()
+	        cityState: e.target.value.toLowerCase()
 	      });
 	    }
 	  }, {
@@ -47687,11 +47678,12 @@ module.exports =
 	      e.preventDefault();
 
 	      var self = this;
+	      var cityState = document.getElementById("advancedSearchTextField").value.toLowerCase().split(", ");
 
 	      var data = {
 	        stack: this.state.stack,
-	        city: this.state.city,
-	        state: this.state.state,
+	        city: cityState[0],
+	        state: cityState[1],
 	        education: this.state.education,
 	        gender: this.state.gender,
 	        experience: this.state.experience
@@ -47705,6 +47697,11 @@ module.exports =
 	        success: function success(results) {
 	          self.setState({
 	            salary: results
+	          });
+	          self.props.setCityState({
+	            stack: self.state.stack,
+	            cityForJob: cityState[0],
+	            stateForJob: cityState[1]
 	          });
 	          self.redirectToResults(results);
 	        },
@@ -47738,8 +47735,7 @@ module.exports =
 	            _react2.default.createElement(_advanceSearchInput2.default, {
 	              GetAdvancedSearchData: this.GetAdvancedSearchData,
 	              findStack: this.findStack,
-	              findCity: this.findCity,
-	              findState: this.findState,
+	              findCityState: this.findCityState,
 	              findEducation: this.findEducation,
 	              findGender: this.findGender,
 	              findExperience: this.findExperience
@@ -47766,7 +47762,7 @@ module.exports =
 	}
 
 	function mapDispatchToProps(dispatch) {
-	  return (0, _redux.bindActionCreators)({ setSearch: _actionCreator.setSearch }, dispatch);
+	  return (0, _redux.bindActionCreators)({ setSearch: _actionCreator.setSearch, setCityState: _actionCreator.setCityState }, dispatch);
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AdvancedSearch);
@@ -47807,21 +47803,7 @@ module.exports =
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'col-sm-11' },
-	          _react2.default.createElement('input', { type: 'text', value: props.city, className: 'form-control', onChange: props.findCity, placeholder: 'Add your desired city' })
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'fieldset',
-	        { className: 'form-group row gray' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-1' },
-	          _react2.default.createElement('span', { className: 'glyphicon glyphicon-globe' })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-11' },
-	          _react2.default.createElement('input', { type: 'text', value: props.state, className: 'form-control', onChange: props.findState, placeholder: 'Add your desired state' })
+	          _react2.default.createElement('input', { id: 'advancedSearchTextField', type: 'text', value: props.cityState, className: 'form-control', onChange: props.findCityState, placeholder: 'Add your desired city, state' })
 	        )
 	      ),
 	      _react2.default.createElement(

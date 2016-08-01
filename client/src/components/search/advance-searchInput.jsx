@@ -12,22 +12,11 @@ var AdvancedSearchInput = (props) => (
         </div>
 
         <div className="col-sm-11">
-          <input type="text" value={props.city} className="form-control" onChange={props.findCity} placeholder="Add your desired city" />
+          <input id="advancedSearchTextField" type="text" value={props.cityState} className="form-control" onChange={props.findCityState} placeholder="Add your desired city, state" />
         </div>
 
       </fieldset>
 
-     <fieldset className="form-group row gray">
-      <div className="col-sm-1">
-          <span className="glyphicon glyphicon-globe"></span>
-      </div>
-
-      <div className="col-sm-11">
-        <input type="text" value={props.state} className="form-control" onChange={props.findState} placeholder="Add your desired state" />
-
-      </div>
-
-    </fieldset>
 
     <fieldset className="form-group row gray">
       <div className="col-sm-1">

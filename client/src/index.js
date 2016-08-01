@@ -28,8 +28,10 @@ function initialize() {
     types: ['(cities)'],
     componentRestrictions: {country: "us"}
   };
-  var input = document.getElementById('searchTextField');
-  var autocomplete = new google.maps.places.Autocomplete(input, options);
+  var input1 = document.getElementById('searchTextField');
+  var input2 = document.getElementById('advancedSearchTextField');
+  if(input1) new google.maps.places.Autocomplete(input1, options);
+  if(input2) new google.maps.places.Autocomplete(input2, options);
 };
 
 google.maps.event.addDomListener(window, 'load', initialize);
