@@ -2,14 +2,18 @@
 import React from 'react';
 import $ from 'jquery';
 import { History, Router } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import FileInput from 'react-file-input';
 import ReactStripeCheckout from '../components/payment/stripe.jsx';
+import { loggedIn } from '../auth/auth';
+import Logo from '../components/navigation/logo';
 
 class Premium extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {clicked: false};
+    this.state = {clicked: false, loggedIn: loggedIn()};
   }
 
   toggled() {
@@ -25,11 +29,14 @@ class Premium extends React.Component {
   };
 
   render() {
-    return (
 
-      <div className="row">
+    return (
+    <div id="dashboard" className="container results">
       <nav id="resultNav" className="navbar navbar-default navbar-fixed-top">
+        <Logo loggedIn={this.state.loggedIn} />
       </nav>
+
+
         <h1> Premium Content </h1>
 
         <p> We match top talent with the world's most innovative companies. </p>
