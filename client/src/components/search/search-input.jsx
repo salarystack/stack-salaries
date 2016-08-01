@@ -18,7 +18,7 @@ var SearchInput = (props) => (
       <input
         type="text"
         id="searchTextField"
-        className="city form-control"
+        className="city form-control searchTextField"
         value={props.cityState}
         onChange={props.findCityState}
         placeholder="City, State"
