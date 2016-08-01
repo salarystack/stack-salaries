@@ -69,10 +69,10 @@ class SignForm extends React.Component{
       data: JSON.stringify(data),
       success: function(results) {
         console.log(data);
-        window.localStorage.setItem('token', results.token),
-        window.localStorage.setItem('name', results.user.name),
-        window.localStorage.setItem('email', results.user.email),
-        window.localStorage.setItem('gender', results.user.gender),
+        localStorage.setItem('token', results.token),
+        localStorage.setItem('name', results.user.name),
+        localStorage.setItem('email', results.user.email),
+        localStorage.setItem('gender', results.user.gender),
         self.setState({
           authToken: results.token
         });
