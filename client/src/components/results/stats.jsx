@@ -44,7 +44,6 @@ class Stats extends React.Component {
             <p className="lead text-center">Related Jobs in Your Area</p>
             <Jobs />
           </div>
-          <Footer/>
         </div>
       </div>
     );

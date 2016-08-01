@@ -70,15 +70,15 @@ module.exports =
 
 	var _mainLayout2 = _interopRequireDefault(_mainLayout);
 
-	var _stats = __webpack_require__(223);
+	var _stats = __webpack_require__(224);
 
 	var _stats2 = _interopRequireDefault(_stats);
 
-	var _logout = __webpack_require__(266);
+	var _logout = __webpack_require__(264);
 
 	var _logout2 = _interopRequireDefault(_logout);
 
-	var _app = __webpack_require__(267);
+	var _app = __webpack_require__(265);
 
 	var _app2 = _interopRequireDefault(_app);
 
@@ -86,33 +86,45 @@ module.exports =
 
 	var _jobs2 = _interopRequireDefault(_jobs);
 
-	var _dashboard = __webpack_require__(270);
+	var _dashboard = __webpack_require__(268);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _signupForm = __webpack_require__(273);
+	var _signupForm = __webpack_require__(271);
 
 	var _signupForm2 = _interopRequireDefault(_signupForm);
 
-	var _loginForm = __webpack_require__(275);
+	var _loginForm = __webpack_require__(273);
 
 	var _loginForm2 = _interopRequireDefault(_loginForm);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _results = __webpack_require__(262);
+	var _results = __webpack_require__(260);
 
 	var _results2 = _interopRequireDefault(_results);
 
-	var _advancedSearch = __webpack_require__(264);
+	var _advancedSearch = __webpack_require__(262);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
-	var _premium = __webpack_require__(277);
+	var _premium = __webpack_require__(275);
 
 	var _premium2 = _interopRequireDefault(_premium);
+
+	var _contact = __webpack_require__(279);
+
+	var _contact2 = _interopRequireDefault(_contact);
+
+	var _about = __webpack_require__(280);
+
+	var _about2 = _interopRequireDefault(_about);
+
+	var _team = __webpack_require__(281);
+
+	var _team2 = _interopRequireDefault(_team);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -120,7 +132,11 @@ module.exports =
 	// desired path
 
 
-	// Import all components
+	// Import all containers
+
+
+	// Import all actions & helper methods
+	// Import all required modules
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { path: '/', component: _mainLayout2.default },
@@ -164,14 +180,25 @@ module.exports =
 	    _reactRouter.Route,
 	    { path: 'premium' },
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _premium2.default })
+	  ),
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: 'contact' },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _contact2.default })
+	  ),
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: 'about' },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _about2.default })
+	  ),
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: 'team' },
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _team2.default })
 	  )
 	);
 
-	// Import all containers
-
-
-	// Import all actions & helper methods
-	// Import all required modules
+	// Import all components
 
 /***/ },
 /* 2 */
@@ -25245,6 +25272,10 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _footer = __webpack_require__(223);
+
+	var _footer2 = _interopRequireDefault(_footer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var MainLayout = _react2.default.createClass({
@@ -25258,7 +25289,8 @@ module.exports =
 	        'main',
 	        null,
 	        this.props.children
-	      )
+	      ),
+	      _react2.default.createElement(_footer2.default, null)
 	    );
 	  }
 	});
@@ -25267,6 +25299,88 @@ module.exports =
 
 /***/ },
 /* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(158);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Footer = _react2.default.createClass({
+	  displayName: 'Footer',
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'footer center-block text-center' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'list-inline' },
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/' },
+	              'Home'
+	            ),
+	            ' '
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/about' },
+	              'About'
+	            ),
+	            ' '
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/team' },
+	              'Team Mewtwo'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/contact' },
+	              'Contact'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'lead' },
+	          '© 2016 Salary Stack'
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = Footer;
+
+/***/ },
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25285,15 +25399,15 @@ module.exports =
 
 	var _auth = __webpack_require__(221);
 
-	var _login = __webpack_require__(224);
+	var _login = __webpack_require__(225);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _logo = __webpack_require__(225);
+	var _logo = __webpack_require__(226);
 
 	var _logo2 = _interopRequireDefault(_logo);
 
-	var _footer = __webpack_require__(226);
+	var _footer = __webpack_require__(223);
 
 	var _footer2 = _interopRequireDefault(_footer);
 
@@ -25301,15 +25415,15 @@ module.exports =
 
 	var _jobs2 = _interopRequireDefault(_jobs);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _results = __webpack_require__(262);
+	var _results = __webpack_require__(260);
 
 	var _results2 = _interopRequireDefault(_results);
 
-	var _advancedSearch = __webpack_require__(264);
+	var _advancedSearch = __webpack_require__(262);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
@@ -25383,8 +25497,7 @@ module.exports =
 	              'Related Jobs in Your Area'
 	            ),
 	            _react2.default.createElement(_jobs2.default, null)
-	          ),
-	          _react2.default.createElement(_footer2.default, null)
+	          )
 	        )
 	      );
 	    }
@@ -25396,7 +25509,7 @@ module.exports =
 	exports.default = Stats;
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25466,7 +25579,7 @@ module.exports =
 	exports.default = Login;
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25575,87 +25688,6 @@ module.exports =
 	exports.default = Logo;
 
 /***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(158);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Footer = _react2.default.createClass({
-	  displayName: 'Footer',
-
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'footer center-block text-center' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'row' },
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'list-inline' },
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/' },
-	              'About'
-	            ),
-	            ' '
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/' },
-	              'Jobs'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/' },
-	              'Team Onix'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/' },
-	              'Contact'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'lead' },
-	          '© 2016 Stack Salaries'
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports.default = Footer;
-
-/***/ },
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -25679,13 +25711,13 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _jobsList = __webpack_require__(258);
+	var _jobsList = __webpack_require__(256);
 
 	var _jobsList2 = _interopRequireDefault(_jobsList);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -35788,11 +35820,11 @@ module.exports =
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(255);
+	var _hoistNonReactStatics = __webpack_require__(201);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(256);
+	var _invariant = __webpack_require__(166);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -37242,121 +37274,6 @@ module.exports =
 /* 255 */
 /***/ function(module, exports) {
 
-	/**
-	 * Copyright 2015, Yahoo! Inc.
-	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-	 */
-	'use strict';
-
-	var REACT_STATICS = {
-	    childContextTypes: true,
-	    contextTypes: true,
-	    defaultProps: true,
-	    displayName: true,
-	    getDefaultProps: true,
-	    mixins: true,
-	    propTypes: true,
-	    type: true
-	};
-
-	var KNOWN_STATICS = {
-	    name: true,
-	    length: true,
-	    prototype: true,
-	    caller: true,
-	    arguments: true,
-	    arity: true
-	};
-
-	var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
-
-	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
-	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-	        var keys = Object.getOwnPropertyNames(sourceComponent);
-
-	        /* istanbul ignore else */
-	        if (isGetOwnPropertySymbolsAvailable) {
-	            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
-	        }
-
-	        for (var i = 0; i < keys.length; ++i) {
-	            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
-	                try {
-	                    targetComponent[keys[i]] = sourceComponent[keys[i]];
-	                } catch (error) {
-
-	                }
-	            }
-	        }
-	    }
-
-	    return targetComponent;
-	};
-
-
-/***/ },
-/* 256 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-
-	'use strict';
-
-	/**
-	 * Use invariant() to assert state which your program assumes to be true.
-	 *
-	 * Provide sprintf-style format (only %s is supported) and arguments
-	 * to provide information about what broke and what you were
-	 * expecting.
-	 *
-	 * The invariant message will be stripped in production, but the invariant
-	 * will remain to ensure logic does not differ in production.
-	 */
-
-	var NODE_ENV = process.env.NODE_ENV;
-
-	var invariant = function(condition, format, a, b, c, d, e, f) {
-	  if (NODE_ENV !== 'production') {
-	    if (format === undefined) {
-	      throw new Error('invariant requires an error message argument');
-	    }
-	  }
-
-	  if (!condition) {
-	    var error;
-	    if (format === undefined) {
-	      error = new Error(
-	        'Minified exception occurred; use the non-minified dev environment ' +
-	        'for the full error message and additional helpful warnings.'
-	      );
-	    } else {
-	      var args = [a, b, c, d, e, f];
-	      var argIndex = 0;
-	      error = new Error(
-	        format.replace(/%s/g, function() { return args[argIndex++]; })
-	      );
-	      error.name = 'Invariant Violation';
-	    }
-
-	    error.framesToPop = 1; // we don't care about invariant's own frame
-	    throw error;
-	  }
-	};
-
-	module.exports = invariant;
-
-
-/***/ },
-/* 257 */
-/***/ function(module, exports) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -37394,7 +37311,7 @@ module.exports =
 	}
 
 /***/ },
-/* 258 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37407,7 +37324,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _jobsItem = __webpack_require__(259);
+	var _jobsItem = __webpack_require__(257);
 
 	var _jobsItem2 = _interopRequireDefault(_jobsItem);
 
@@ -37429,7 +37346,7 @@ module.exports =
 	exports.default = JobsList;
 
 /***/ },
-/* 259 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37505,7 +37422,7 @@ module.exports =
 	exports.default = JobsItem;
 
 /***/ },
-/* 260 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37530,9 +37447,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _searchInput = __webpack_require__(261);
+	var _searchInput = __webpack_require__(259);
 
 	var _searchInput2 = _interopRequireDefault(_searchInput);
 
@@ -37665,7 +37582,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Search);
 
 /***/ },
-/* 261 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37717,7 +37634,7 @@ module.exports =
 	exports.default = SearchInput;
 
 /***/ },
-/* 262 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37732,7 +37649,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _d = __webpack_require__(263);
+	var _d = __webpack_require__(261);
 
 	var _d2 = _interopRequireDefault(_d);
 
@@ -37742,9 +37659,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -37988,7 +37905,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Results);
 
 /***/ },
-/* 263 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -47547,7 +47464,7 @@ module.exports =
 	}();
 
 /***/ },
-/* 264 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47572,15 +47489,15 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
 	var _auth = __webpack_require__(221);
 
-	var _advanceSearchInput = __webpack_require__(265);
+	var _advanceSearchInput = __webpack_require__(263);
 
 	var _advanceSearchInput2 = _interopRequireDefault(_advanceSearchInput);
 
-	var _logo = __webpack_require__(225);
+	var _logo = __webpack_require__(226);
 
 	var _logo2 = _interopRequireDefault(_logo);
 
@@ -47768,7 +47685,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AdvancedSearch);
 
 /***/ },
-/* 265 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47892,7 +47809,7 @@ module.exports =
 	exports.default = AdvancedSearchInput;
 
 /***/ },
-/* 266 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47951,7 +47868,7 @@ module.exports =
 	exports.default = Logout;
 
 /***/ },
-/* 267 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47974,21 +47891,21 @@ module.exports =
 
 	var _auth = __webpack_require__(221);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _login = __webpack_require__(224);
+	var _login = __webpack_require__(225);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _main = __webpack_require__(268);
+	var _main = __webpack_require__(266);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _cloud = __webpack_require__(269);
+	var _cloud = __webpack_require__(267);
 
 	var _cloud2 = _interopRequireDefault(_cloud);
 
-	var _search = __webpack_require__(260);
+	var _search = __webpack_require__(258);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -48071,7 +47988,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
 /***/ },
-/* 268 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48110,7 +48027,7 @@ module.exports =
 	exports.default = Main;
 
 /***/ },
-/* 269 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48136,7 +48053,7 @@ module.exports =
 	exports.default = Cloud;
 
 /***/ },
-/* 270 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48161,19 +48078,19 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
 	var _auth = __webpack_require__(221);
 
-	var _flash = __webpack_require__(271);
+	var _flash = __webpack_require__(269);
 
 	var _flash2 = _interopRequireDefault(_flash);
 
-	var _dashboardDataInput = __webpack_require__(272);
+	var _dashboardDataInput = __webpack_require__(270);
 
 	var _dashboardDataInput2 = _interopRequireDefault(_dashboardDataInput);
 
-	var _logo = __webpack_require__(225);
+	var _logo = __webpack_require__(226);
 
 	var _logo2 = _interopRequireDefault(_logo);
 
@@ -48418,7 +48335,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Dashboard);
 
 /***/ },
-/* 271 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48476,7 +48393,7 @@ module.exports =
 	exports.default = Flash;
 
 /***/ },
-/* 272 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48623,7 +48540,7 @@ module.exports =
 	exports.default = DataInput;
 
 /***/ },
-/* 273 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48648,9 +48565,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _signupInput = __webpack_require__(274);
+	var _signupInput = __webpack_require__(272);
 
 	var _signupInput2 = _interopRequireDefault(_signupInput);
 
@@ -48778,7 +48695,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignForm);
 
 /***/ },
-/* 274 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48920,7 +48837,7 @@ module.exports =
 	exports.default = SignupInput;
 
 /***/ },
-/* 275 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48945,21 +48862,21 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(257);
+	var _actionCreator = __webpack_require__(255);
 
-	var _flash = __webpack_require__(271);
+	var _flash = __webpack_require__(269);
 
 	var _flash2 = _interopRequireDefault(_flash);
 
-	var _loginInput = __webpack_require__(276);
+	var _loginInput = __webpack_require__(274);
 
 	var _loginInput2 = _interopRequireDefault(_loginInput);
 
-	var _login = __webpack_require__(224);
+	var _login = __webpack_require__(225);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _advancedSearch = __webpack_require__(264);
+	var _advancedSearch = __webpack_require__(262);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
@@ -49111,7 +49028,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 /***/ },
-/* 276 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49228,7 +49145,7 @@ module.exports =
 	exports.default = LoginInput;
 
 /***/ },
-/* 277 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49253,17 +49170,17 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _reactFileInput = __webpack_require__(278);
+	var _reactFileInput = __webpack_require__(276);
 
 	var _reactFileInput2 = _interopRequireDefault(_reactFileInput);
 
-	var _stripe = __webpack_require__(279);
+	var _stripe = __webpack_require__(277);
 
 	var _stripe2 = _interopRequireDefault(_stripe);
 
 	var _auth = __webpack_require__(221);
 
-	var _logo = __webpack_require__(225);
+	var _logo = __webpack_require__(226);
 
 	var _logo2 = _interopRequireDefault(_logo);
 
@@ -49332,13 +49249,6 @@ module.exports =
 	          null,
 	          ' We\'ve helped thousands of people find their dream jobs. '
 	        ),
-	        _react2.default.createElement(_reactFileInput2.default, {
-	          name: 'myImage',
-	          accept: '.docx,.jpg',
-	          placeholder: 'Upload asdfasdf',
-	          className: 'inputClass',
-	          onChange: this.handleChange,
-	          styles: { zIndex: 99999 } }),
 	        _react2.default.createElement(
 	          'button',
 	          { className: 'btn btn-default' },
@@ -49366,8 +49276,7 @@ module.exports =
 	                accept: '.docx,.jpg',
 	                placeholder: 'Upload asdfasdf',
 	                className: 'inputClass',
-	                onChange: this.handleChange,
-	                style: { zIndex: 99999 } })
+	                onChange: this.handleChange })
 	            ),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('img', { className: 'media-object img-circle', src: 'https://s.gravatar.com/avatar/cc2623f773bcdd3b6b8765c33f1ec5a1?s=200' }),
@@ -49394,7 +49303,7 @@ module.exports =
 	exports.default = Premium;
 
 /***/ },
-/* 278 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
@@ -49465,7 +49374,7 @@ module.exports =
 
 
 /***/ },
-/* 279 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49480,7 +49389,7 @@ module.exports =
 	  }return target;
 	};
 	var React = __webpack_require__(2);
-	var ReactScriptLoaderMixin = __webpack_require__(280).ReactScriptLoaderMixin;
+	var ReactScriptLoaderMixin = __webpack_require__(278).ReactScriptLoaderMixin;
 	var ReactStripeCheckout = React.createClass({
 
 	  displayName: 'ReactStripeCheckout',
@@ -49698,7 +49607,7 @@ module.exports =
 	module.exports = ReactStripeCheckout;
 
 /***/ },
-/* 280 */
+/* 278 */
 /***/ function(module, exports) {
 
 	
@@ -49820,6 +49729,180 @@ module.exports =
 	exports.ReactScriptLoaderMixin = ReactScriptLoaderMixin;
 	exports.ReactScriptLoader = ReactScriptLoader;
 
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Contact = _react2.default.createClass({
+	  displayName: "Contact",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "dashboard center-block text-center" },
+	      _react2.default.createElement(
+	        "h1",
+	        { className: "feature" },
+	        "Contact us"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        { className: "text-center" },
+	        "Have suggestions or questions for us?"
+	      ),
+	      _react2.default.createElement(
+	        "form",
+	        { className: "flexcontainer" },
+	        _react2.default.createElement(
+	          "fieldset",
+	          { className: "form-group row gray" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-sm-1" },
+	            _react2.default.createElement("span", { className: "glyphicon glyphicon-user" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-sm-11" },
+	            _react2.default.createElement("input", { type: "text", className: "form-control", placeholder: "Name" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "fieldset",
+	          { className: "form-group row gray" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-sm-1" },
+	            _react2.default.createElement("span", { className: "glyphicon glyphicon-envelope" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-sm-11" },
+	            _react2.default.createElement("input", { type: "email", className: "form-control", placeholder: "Email" })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "fieldset",
+	          { className: "form-group row gray" },
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-sm-1" },
+	            _react2.default.createElement("span", { className: "glyphicon glyphicon-pencil" })
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "col-sm-11" },
+	            _react2.default.createElement("textarea", { className: "form-control", rows: "4", defaultValue: "Write message here..." })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "row" },
+	          _react2.default.createElement(
+	            "button",
+	            { type: "submit", className: "btn btn-primary" },
+	            " ",
+	            _react2.default.createElement("span", { className: "glyphicon glyphicon-send" }),
+	            "Submit"
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = Contact;
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var About = _react2.default.createClass({
+	  displayName: "About",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        { className: "feature" },
+	        "About Salary Stack"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        { className: "text-center" },
+	        "An app for software engineers to post and view anonymous salary info based on their stack and location."
+	      )
+	    );
+	  }
+	});
+
+	exports.default = About;
+
+/***/ },
+/* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Team = _react2.default.createClass({
+	  displayName: "Team",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement(
+	        "h1",
+	        { className: "feature" },
+	        "Team Mewtwo"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        { className: "text-center" },
+	        "The best team ever!"
+	      )
+	    );
+	  }
+	});
+
+	exports.default = Team;
 
 /***/ }
 /******/ ]);

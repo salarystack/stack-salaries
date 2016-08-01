@@ -37,8 +37,6 @@ class App extends React.Component {
           <Main/>
           <Search history={this.props.history}/>
           <Cloud/>
-
-
         </div>
       </div>
       <div className="art">
