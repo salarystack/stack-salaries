@@ -13,6 +13,9 @@ export function loggedIn(){
 // New tokens are sent every time a user logs in
 export function logOut(){
   delete localStorage.token;
+  delete localStorage.email;
+  delete localStorage.name;
+  delete localStorage.gender;
 }
 
 // Retrieves a given token from localStorage

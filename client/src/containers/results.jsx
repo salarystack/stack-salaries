@@ -103,7 +103,7 @@ var Bar = React.createClass({
       .rangeRoundBands([0, this.props.width], 0.05);
 
     var bars = data.map(function(point, i) {
-      point = (point === null)? 0: point;
+      point = (point === null || point === undefined)? 0: point;
       var height = yScale(point),
           y = props.height - height,
           width = xScale.rangeBand(),
