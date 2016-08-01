@@ -219,7 +219,6 @@ svg {
   color: #fff;
 }
 
-
 /*.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   color: #1abc9c;
   border: 1px solid #1abc9c;
@@ -499,6 +498,18 @@ svg {
   margin-top: 10px;
 }
 
+.recruitImg {
+  max-width: 100%;
+  margin: auto;
+}
+
+.recruitImgTwo {
+  max-width: 50%;
+  max-height: 50%;
+  margin: auto;
+  display: block;
+}
+
 .inner-search .search-wrapper {
   background-color: #ecf0f1;
   margin-bottom: 40px;
@@ -507,4 +518,12 @@ svg {
 
 .recruiterBox .panel-body{
   color: #454545;
+}
+
+.recruiterPic {
+  margin: auto;
+}
+
+.uploadResume {
+  line-height: 0;
 }
