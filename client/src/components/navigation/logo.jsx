@@ -13,6 +13,7 @@ var Logo = (props) => {
         <div className="right">
           {props.loggedIn ? (
               <div>
+                <button className="btn btn-primary login"><Link to='/premium'>Premium</Link></button>
                 <button className="btn btn-primary login"><Link to='/dashboard'>Dashboard</Link></button>
                 <button className="btn btn-primary login"><Link to='/advancedsearch'>Advanced Search</Link></button>
                 <button className="btn btn-primary login"><Link to='/logout'>Log Out</Link></button>
