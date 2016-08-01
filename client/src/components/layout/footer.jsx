@@ -10,7 +10,7 @@ const Footer = React.createClass({
             <li><Link to='/'>About</Link> </li>
               <li><Link to='/'>Jobs</Link></li>
              <li><Link to='/'>Team Onix</Link></li>
-             <li><Link to='/'>Contact</Link></li>
+             <li><Link to='/contact'>Contact</Link></li>
           </ul>
           <p className="lead">&copy; 2016 Stack Salaries</p>
         </div>
