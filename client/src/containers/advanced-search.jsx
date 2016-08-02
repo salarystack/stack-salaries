@@ -119,7 +119,7 @@ class AdvancedSearch extends React.Component{
 
       <div className="row dashboard-row center-block">
         <div className="dashboard row">
-          <h1>Advance Search</h1>
+          <h1>Advanced Search</h1>
             <AdvancedSearchInput
               GetAdvancedSearchData={this.GetAdvancedSearchData}
               findStack={this.findStack}
