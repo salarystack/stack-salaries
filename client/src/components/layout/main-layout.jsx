@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './footer';
 
 const MainLayout = React.createClass({
   render: function() {
@@ -7,6 +8,7 @@ const MainLayout = React.createClass({
         <main>
           {this.props.children}
         </main>
+        <Footer />
       </div>
     );
   }

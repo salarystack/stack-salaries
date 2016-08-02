@@ -20,6 +20,9 @@ import Search from './containers/search';
 import Results from './containers/results';
 import AdvancedSearch from './containers/advanced-search';
 import Premium from './containers/premium';
+import Contact from './components/layout/contact';
+import About from './components/layout/about';
+import Team from './components/layout/team';
 // The react router renders components based on
 // desired path
 export default (
@@ -58,5 +61,16 @@ export default (
       <IndexRoute component={Premium} />
     </Route>
 
+    <Route path="contact">
+      <IndexRoute component={Contact} />
+    </Route>
+
+    <Route path="about">
+      <IndexRoute component={About} />
+    </Route>
+
+    <Route path="team">
+      <IndexRoute component={Team} />
+    </Route>
   </Route>
 );
