@@ -7,7 +7,6 @@ var ReactStripeCheckout = React.createClass({
   mixins: [ReactScriptLoaderMixin],
   getDefaultProps: function getDefaultProps() {
     const toggled = this.props;
-    console.log('props are ', this.props);
     return {
       className: 'StripeCheckout',
       label: 'Enroll Now!',
