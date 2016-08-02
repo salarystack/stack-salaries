@@ -49805,7 +49805,7 @@ module.exports =
 	      _jquery2.default.ajax({
 	        url: '/api/contact',
 	        type: 'POST',
-	        data: { message: JSON.stringify(this.state.contactMessage), email: JSON.stringify(this.state.contactEmail) },
+	        data: { message: this.state.contactMessage, email: this.state.contactEmail },
 	        success: function () {
 	          this.setState({
 	            showFeedback: true
