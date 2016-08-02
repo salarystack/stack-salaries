@@ -15,8 +15,10 @@ import github from './passport/github';
 import passport from 'passport';
 import logout from 'express-passport-logout';
 import React from 'react';
-import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+import mailer from 'express-mailer';
+
 var routes = require('./compiled/src/bundle').default;
 var SD = require('./controllers/stackdataController');
 
@@ -47,6 +49,17 @@ function generateToken(user){
 var requireAuth = passport.authenticate('jwt', { session: false } );
 var requireSignIn = passport.authenticate('local', { session: false });
 var githubAuth = passport.authenticate('github', { session: false, successRedirect: '/', failureRedirect: '/login'});
+
+// mailer.extend(app, {
+//   from: 'stacksalary@gmail.com'
+//   host: 'smtp.gmail.com', // hostname
+//   secureConnection: true, // use SSL
+//   port: 465, // port for secure SMTP
+//   auth: {
+//     user: 'stacksalary@gmail.com',
+//     pass: 'mewtwo17'
+//   }
+// });
 
 // Allow all headers
 app.all('*', function(req, res, next) { 
@@ -175,6 +188,20 @@ app.get('*', function(req, res, next) {
     }
   })
 });
+
+// app.get('/api/contact', function (req, res) {
+//   app.mailer.send('email', {
+//     to: 'stacksalary@gmail.com',
+//     subject: 'Question',
+//     text: 'something'
+//   }, function (err) {
+//     if (err) {
+//       console.log(err);
+//       res.send('There was an error sending the meail');
+//     }
+//     res.send('Email Sent!');
+//   });
+// });
 
 var port = process.env.PORT || 3000;
 
