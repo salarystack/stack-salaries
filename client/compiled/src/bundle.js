@@ -50042,11 +50042,13 @@
 /* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
@@ -50054,83 +50056,138 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Contact = _react2.default.createClass({
-	  displayName: "Contact",
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "dashboard center-block text-center" },
-	      _react2.default.createElement(
-	        "h1",
-	        { className: "feature" },
-	        "Contact us"
-	      ),
-	      _react2.default.createElement(
-	        "p",
-	        { className: "text-center" },
-	        "Have suggestions or questions for us?"
-	      ),
-	      _react2.default.createElement(
-	        "form",
-	        { className: "flexcontainer" },
-	        _react2.default.createElement(
-	          "fieldset",
-	          { className: "form-group row gray" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-sm-1" },
-	            _react2.default.createElement("span", { className: "glyphicon glyphicon-user" })
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-sm-11" },
-	            _react2.default.createElement("input", { type: "text", className: "form-control", placeholder: "Name" })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "fieldset",
-	          { className: "form-group row gray" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-sm-1" },
-	            _react2.default.createElement("span", { className: "glyphicon glyphicon-envelope" })
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-sm-11" },
-	            _react2.default.createElement("input", { type: "email", className: "form-control", placeholder: "Email" })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "fieldset",
-	          { className: "form-group row gray" },
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-sm-1" },
-	            _react2.default.createElement("span", { className: "glyphicon glyphicon-pencil" })
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "col-sm-11" },
-	            _react2.default.createElement("textarea", { className: "form-control", rows: "4", defaultValue: "Write message here..." })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "row" },
-	          _react2.default.createElement(
-	            "button",
-	            { type: "submit", className: "btn btn-primary" },
-	            " ",
-	            _react2.default.createElement("span", { className: "glyphicon glyphicon-send" }),
-	            "Submit"
-	          )
-	        )
-	      )
-	    );
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Contact = function (_React$Component) {
+	  _inherits(Contact, _React$Component);
+
+	  function Contact(props) {
+	    _classCallCheck(this, Contact);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Contact).call(this, props));
+
+	    _this.state = {
+	      contactName: 'Jane',
+	      contactEmail: 'email',
+	      contactMessage: 'I have a question',
+	      showFeedback: false
+	    };
+	    return _this;
 	  }
-	});
+
+	  _createClass(Contact, [{
+	    key: 'contactNameChange',
+	    value: function contactNameChange(e) {
+	      this.setState({
+	        contactName: e.target.value
+	      });
+	    }
+	  }, {
+	    key: 'contactEmailChange',
+	    value: function contactEmailChange(e) {
+	      this.setState({
+	        contactEmail: e.target.value.toLowerCase()
+	      });
+	    }
+	  }, {
+	    key: 'contactMessageChange',
+	    value: function contactMessageChange(e) {
+	      this.setState({
+	        contactMessage: e.target.value.toLowerCase()
+	      });
+	    }
+	  }, {
+	    key: 'sendContactMessage',
+	    value: function sendContactMessage(e) {
+	      this.setState({
+	        showFeedback: true
+	      });
+	      console.log('sent meesage!', this.state.contactName, this.state.contactEmail, this.state.contactMessage);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'dashboard center-block text-center' },
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'feature' },
+	          'Contact us'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'text-center' },
+	          'Have suggestions or questions for us?'
+	        ),
+	        _react2.default.createElement(
+	          'form',
+	          { className: 'flexcontainer' },
+	          _react2.default.createElement(
+	            'fieldset',
+	            { className: 'form-group row gray' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-1' },
+	              _react2.default.createElement('span', { className: 'glyphicon glyphicon-user' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-11' },
+	              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'Name', onChange: this.contactNameChange.bind(this) })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'fieldset',
+	            { className: 'form-group row gray' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-1' },
+	              _react2.default.createElement('span', { className: 'glyphicon glyphicon-envelope' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-11' },
+	              _react2.default.createElement('input', { type: 'email', className: 'form-control', placeholder: 'Email', onChange: this.contactEmailChange.bind(this) })
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'fieldset',
+	            { className: 'form-group row gray' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-1' },
+	              _react2.default.createElement('span', { className: 'glyphicon glyphicon-pencil' })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'col-sm-11' },
+	              _react2.default.createElement('textarea', { className: 'form-control', rows: '4', placeholder: 'Write message here...', onChange: this.contactMessageChange.bind(this) })
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { className: 'btn btn-primary', onClick: this.sendContactMessage.bind(this) },
+	          'Submit'
+	        ),
+	        this.state.showFeedback ? _react2.default.createElement(
+	          'p',
+	          null,
+	          ' ',
+	          this.state.contactName,
+	          ', Thank you for the message! We will get back you as soon as possible! '
+	        ) : null
+	      );
+	    }
+	  }]);
+
+	  return Contact;
+	}(_react2.default.Component);
 
 	exports.default = Contact;
 
