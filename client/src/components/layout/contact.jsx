@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Contact extends React.Component{
   constructor (props) {
@@ -30,13 +31,20 @@ class Contact extends React.Component{
   }
 
   sendContactMessage (e) {
-    this.setState({
-      showFeedback: true
+    $.ajax({
+      url:'/api/contact',
+      type: 'POST',
+      data: { message: JSON.stringify(this.state.contactMessage), email: JSON.stringify(this.state.contactEmail) },
+      success: function() {
+        this.setState({
+          showFeedback: true
+        })
+      }.bind(this),
+      error: function() {
+        console.log('ajax sent failed!')
+      }
     })
-    console.log('sent meesage!', this.state.contactName, this.state.contactEmail, this.state.contactMessage);
   }
-
-
 
   render () {
     return (
@@ -70,7 +78,7 @@ class Contact extends React.Component{
           </fieldset>
         </form>
           <button className="btn btn-primary" onClick={this.sendContactMessage.bind(this)}>Submit</button>
-          {this.state.showFeedback ? <p> {this.state.contactName}, Thank you for the message! We will get back you as soon as possible! </p> : null }
+          {this.state.showFeedback ? <p> {this.state.contactName}, Thank you for the message! <br /> We will get back to you as soon as possible! </p> : null }
       </div>
     );
   }

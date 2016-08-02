@@ -24,11 +24,11 @@ var SD = require('./controllers/stackdataController');
 
 var app = express();
 
+app.set('view engine', 'jade');
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/compiled')));
-
 
 // Mongoose Connection (Refactor into Separate File)
 var databaseURL = process.env.MONGODB_URI ||'mongodb://localhost:27017/stack-salaries'
@@ -49,17 +49,6 @@ function generateToken(user){
 var requireAuth = passport.authenticate('jwt', { session: false } );
 var requireSignIn = passport.authenticate('local', { session: false });
 var githubAuth = passport.authenticate('github', { session: false, successRedirect: '/', failureRedirect: '/login'});
-
-// mailer.extend(app, {
-//   from: 'stacksalary@gmail.com'
-//   host: 'smtp.gmail.com', // hostname
-//   secureConnection: true, // use SSL
-//   port: 465, // port for secure SMTP
-//   auth: {
-//     user: 'stacksalary@gmail.com',
-//     pass: 'mewtwo17'
-//   }
-// });
 
 // Allow all headers
 app.all('*', function(req, res, next) { 
@@ -189,19 +178,34 @@ app.get('*', function(req, res, next) {
   })
 });
 
-// app.get('/api/contact', function (req, res) {
-//   app.mailer.send('email', {
-//     to: 'stacksalary@gmail.com',
-//     subject: 'Question',
-//     text: 'something'
-//   }, function (err) {
-//     if (err) {
-//       console.log(err);
-//       res.send('There was an error sending the meail');
-//     }
-//     res.send('Email Sent!');
-//   });
-// });
+
+mailer.extend(app, {
+  from: 'stacksalary@gmail.com',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'stacksalary@gmail.com',
+    pass: 'mewtwo17'
+  }
+});
+
+app.post('/api/contact', function (req, res) {
+  console.log("req body message is ", req.body.message)
+  app.mailer.send('email', {
+    to: 'stacksalary@gmail.com',
+    subject: 'Question about Stack Salary from '+ req.body.email,
+    text: req.body.message
+  }, function (err) {
+    if (err) {
+      console.log(err);
+      res.send('There was an error sending the meail');
+      return;
+    }
+    res.send('Email Sent!');
+  });
+});
 
 var port = process.env.PORT || 3000;
 

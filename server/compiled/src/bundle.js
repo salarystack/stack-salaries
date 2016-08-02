@@ -49749,6 +49749,10 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _jquery = __webpack_require__(228);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49798,10 +49802,19 @@ module.exports =
 	  }, {
 	    key: 'sendContactMessage',
 	    value: function sendContactMessage(e) {
-	      this.setState({
-	        showFeedback: true
+	      _jquery2.default.ajax({
+	        url: '/api/contact',
+	        type: 'POST',
+	        data: { message: JSON.stringify(this.state.contactMessage), email: JSON.stringify(this.state.contactEmail) },
+	        success: function () {
+	          this.setState({
+	            showFeedback: true
+	          });
+	        }.bind(this),
+	        error: function error() {
+	          console.log('ajax sent failed!');
+	        }
 	      });
-	      console.log('sent meesage!', this.state.contactName, this.state.contactEmail, this.state.contactMessage);
 	    }
 	  }, {
 	    key: 'render',
@@ -49875,7 +49888,9 @@ module.exports =
 	          null,
 	          ' ',
 	          this.state.contactName,
-	          ', Thank you for the message! We will get back you as soon as possible! '
+	          ', Thank you for the message! ',
+	          _react2.default.createElement('br', null),
+	          ' We will get back to you as soon as possible! '
 	        ) : null
 	      );
 	    }
