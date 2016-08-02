@@ -27787,7 +27787,7 @@
 	        dataType: 'jsonp',
 	        type: 'GET',
 	        timeout: 5000,
-	        url: 'http://api.indeed.com/ads/apisearch',
+	        url: 'https://api.indeed.com/ads/apisearch',
 	        success: function success(result) {
 	          self.setState({
 	            jobs: result.results
@@ -38150,7 +38150,7 @@
 	      return d.y;
 	    });
 
-	    var yScale = _d2.default.scale.linear().domain([0, 2000000]).range([0, this.props.height]);
+	    var yScale = _d2.default.scale.linear().domain([0, 1000000]).range([0, this.props.height]);
 
 	    var xScale = _d2.default.scale.ordinal().domain(_d2.default.range(this.props.data.length)).rangeRoundBands([0, this.props.width], 0.05);
 
@@ -49618,18 +49618,18 @@
 	        ),
 	        _react2.default.createElement(
 	          'p',
-	          null,
+	          { className: 'text-center' },
 	          ' We match top talent with the world\'s most innovative companies. '
 	        ),
 	        _react2.default.createElement(
 	          'p',
-	          null,
+	          { className: 'text-center' },
 	          ' We\'ve helped thousands of people find their dream jobs. '
 	        ),
 	        _react2.default.createElement('img', { className: 'recruitImg', src: 'http://i.imgur.com/jtVH5QF.png' }),
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'btn btn-default' },
+	          { className: 'btn btn-default center-block' },
 	          ' ',
 	          _react2.default.createElement(
 	            _stripe2.default,
@@ -49649,25 +49649,29 @@
 	            { className: 'panel-body' },
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement('img', { className: 'recruiterPic media-object img-circle', src: 'https://s.gravatar.com/avatar/cc2623f773bcdd3b6b8765c33f1ec5a1?s=200' }),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'text-center' },
-	              ' Hi, my name is Sujin and I have over 10 years of experience ',
-	              _react2.default.createElement('br', null),
-	              ' as a technical recruiter.  I look forward to working with you! '
-	            ),
-	            _react2.default.createElement('img', { className: 'recruitImgTwo', src: 'http://i.imgur.com/VpBGZco.png' }),
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'button',
-	              { className: 'btn btn-default', onClick: this.contactRecruiter.bind(this) },
+	              { className: 'btn btn-default center-block', onClick: this.contactRecruiter.bind(this) },
 	              ' Contact Recruiter '
 	            ),
 	            _react2.default.createElement(
 	              'input',
-	              { type: 'file' },
+	              { type: 'file', className: 'premiumInput' },
 	              ' '
-	            )
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'premiumText text-center' },
+	              ' Hi, my name is Sujin and I have over 10 years of experience as',
+	              _react2.default.createElement('br', null),
+	              ' a technical recruiter, and have helped thousands of people ',
+	              _react2.default.createElement('br', null),
+	              'find jobs that they love. I look forward to working with you!  '
+	            ),
+	            _react2.default.createElement('img', { className: 'recruitImgTwo', src: 'http://i.imgur.com/VpBGZco.png' }),
+	            _react2.default.createElement('br', null)
 	          )
 	        ) : null
 	      );

@@ -527,3 +527,15 @@ svg {
 .uploadResume {
   line-height: 0;
 }
+
+.premiumInput {
+  max-width: 200px;
+  margin: auto;
+}
+
+.premiumText {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #16a085;
+}
