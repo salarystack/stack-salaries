@@ -45,7 +45,7 @@ class Jobs extends React.Component {
       dataType: 'jsonp',
       type: 'GET',
       timeout: 5000,
-      url: 'https://api.indeed.com/ads/apisearch',
+      url: 'http://api.indeed.com/ads/apisearch',
       success: function(result){
         self.setState({
           jobs: result.results
