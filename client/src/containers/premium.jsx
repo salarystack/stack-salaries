@@ -49,11 +49,11 @@ class Premium extends React.Component {
         </div>
       </div>
 
-        <p> We match top talent with the world's most innovative companies. </p>
-        <p> We've helped thousands of people find their dream jobs. </p>
+        <p className="text-center"> We match top talent with the world's most innovative companies. </p>
+        <p className="text-center"> We've helped thousands of people find their dream jobs. </p>
         <img className="recruitImg" src="http://i.imgur.com/jtVH5QF.png"/>
 
-        <button className="btn btn-default"> <ReactStripeCheckout token={() => this.setState({clicked: !this.state.clicked})}>Join us today!</ReactStripeCheckout> </button>
+        <button className="btn btn-default center-block"> <ReactStripeCheckout token={() => this.setState({clicked: !this.state.clicked})}>Join us today!</ReactStripeCheckout> </button>
         <br />
 
         {this.state.clicked ?
@@ -61,15 +61,15 @@ class Premium extends React.Component {
           <div className="panel-body">
           <br />
           <img className="recruiterPic media-object img-circle" src="https://s.gravatar.com/avatar/cc2623f773bcdd3b6b8765c33f1ec5a1?s=200" />
-          <p className="text-center"> Hi, my name is Sujin and I have over 10 years of experience <br /> as a technical recruiter.  I look forward to working with you! </p>
+          <br />
+          <button className="btn btn-default center-block" onClick={this.contactRecruiter.bind(this)} > Contact Recruiter </button>
+          <input type="file" className="premiumInput"> </input>
+          <br />
+          <p className="premiumText text-center"> Hi, my name is Sujin and I have over 10 years of experience as<br /> a technical recruiter, and have helped thousands of people <br />
+            find jobs that they love. I look forward to working with you!  </p>
           <img className="recruitImgTwo" src="http://i.imgur.com/VpBGZco.png"/>
 
-
           <br />
-
-          <button className="btn btn-default" onClick={this.contactRecruiter.bind(this)} > Contact Recruiter </button>
-          <input type="file"> </input>
-
 
           </div>
         </div> : null

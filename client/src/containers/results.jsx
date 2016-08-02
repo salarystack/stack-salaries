@@ -95,7 +95,7 @@ var Bar = React.createClass({
     });
 
     var yScale = d3.scale.linear()
-      .domain([0, 2000000])
+      .domain([0, 1000000])
       .range([0, this.props.height]);
 
     var xScale = d3.scale.ordinal()
