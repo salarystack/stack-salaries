@@ -27181,7 +27181,7 @@
 
 	var _contact2 = _interopRequireDefault(_contact);
 
-	var _about = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/layout/about\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _about = __webpack_require__(285);
 
 	var _about2 = _interopRequireDefault(_about);
 
@@ -50236,7 +50236,50 @@
 	exports.default = Contact;
 
 /***/ },
-/* 285 */,
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var About = _react2.default.createClass({
+	  displayName: "About",
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "dashboard center-block text-center" },
+	      _react2.default.createElement(
+	        "h1",
+	        { className: "feature" },
+	        "About Stack Salary"
+	      ),
+	      _react2.default.createElement("img", { className: "img-responsive aboutImage", src: "https://media.licdn.com/mpr/mpr/p/7/005/075/3bb/1e40bf6.jpg", alt: "" }),
+	      _react2.default.createElement(
+	        "p",
+	        { className: "text-center" },
+	        "An app for software engineers to post and view anonymous salary info based on their stack and location.",
+	        _react2.default.createElement("br", null),
+	        "Specify results by selecting comprehensive filters.",
+	        _react2.default.createElement("br", null),
+	        "If your query didn't return what you expected, browse thru related job postings in the area."
+	      )
+	    );
+	  }
+	});
+
+	exports.default = About;
+
+/***/ },
 /* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
