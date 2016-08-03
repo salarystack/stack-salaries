@@ -15,18 +15,20 @@ import github from './passport/github';
 import passport from 'passport';
 import logout from 'express-passport-logout';
 import React from 'react';
-import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+import mailer from 'express-mailer';
+
 var routes = require('./compiled/src/bundle').default;
 var SD = require('./controllers/stackdataController');
 
 var app = express();
 
+app.set('view engine', 'jade');
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/compiled')));
-
 
 // Mongoose Connection (Refactor into Separate File)
 var databaseURL = process.env.MONGODB_URI ||'mongodb://localhost:27017/stack-salaries'
@@ -174,6 +176,35 @@ app.get('*', function(req, res, next) {
       res.status(404).send('Not found')
     }
   })
+});
+
+
+mailer.extend(app, {
+  from: 'stacksalary@gmail.com',
+  host: 'smtp.gmail.com', // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts
+  auth: {
+    user: 'stacksalary@gmail.com',
+    pass: 'mewtwo17'
+  }
+});
+
+app.post('/api/contact', function (req, res) {
+  console.log("req body message is ", req.body.message)
+  app.mailer.send('email', {
+    to: 'stacksalary@gmail.com',
+    subject: 'Question about Stack Salary from '+ req.body.email,
+    text: req.body.message
+  }, function (err) {
+    if (err) {
+      console.log(err);
+      res.send('There was an error sending the meail');
+      return;
+    }
+    res.send('Email Sent!');
+  });
 });
 
 var port = process.env.PORT || 3000;
