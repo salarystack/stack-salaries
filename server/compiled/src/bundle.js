@@ -25776,7 +25776,7 @@ module.exports =
 	        dataType: 'jsonp',
 	        type: 'GET',
 	        timeout: 5000,
-	        url: 'http://api.indeed.com/ads/apisearch',
+	        url: 'https://api.indeed.com/ads/apisearch',
 	        success: function success(result) {
 	          self.setState({
 	            jobs: result.results
@@ -48108,16 +48108,6 @@ module.exports =
 	      "div",
 	      null,
 	      _react2.default.createElement(
-	        "p",
-	        null,
-	        "Dear User,"
-	      ),
-	      _react2.default.createElement(
-	        "p",
-	        null,
-	        "Due to our site's recent launch, there is only meaningful data for javascript technologies in Boston, MA. Please search JS tech stacks in Boston to fully appreciate the site's features including data visualization. More cities and tech stacks are on the way!"
-	      ),
-	      _react2.default.createElement(
 	        "h1",
 	        { className: "feature" },
 	        "Stack Salaries"
@@ -48132,6 +48122,10 @@ module.exports =
 	});
 
 	exports.default = Main;
+	//   <p>Dear User,</p>
+	//<p>Due to our site's recent launch, there is only meaningful data for javascript technologies in Boston, MA.
+	//Please search JS tech stacks in Boston to fully appreciate the site's features including data visualization.
+	//More cities and tech stacks are on the way!</p>
 
 /***/ },
 /* 269 */
