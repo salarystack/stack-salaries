@@ -506,7 +506,8 @@ svg {
 
 .recruitImg {
   max-width: 100%;
-  margin: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 .recruitImgTwo {
@@ -545,3 +546,4 @@ svg {
   margin-bottom: 20px;
   color: #16a085;
 }
+

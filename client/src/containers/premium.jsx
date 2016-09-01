@@ -51,7 +51,8 @@ class Premium extends React.Component {
 
         <p className="text-center"> We match top talent with the world's most innovative companies. </p>
         <p className="text-center"> We've helped thousands of people find their dream jobs. </p>
-        <img className="recruitImg" src="http://i.imgur.com/jtVH5QF.png"/>
+        <img className="recruitImg" src="https://i.imgur.com/Fc4yeRG.jpg"/>
+        <br />
 
         <ReactStripeCheckout className="StripeCheckout btn btn-default center-block" token={() => this.setState({clicked: !this.state.clicked})} componentClass={'button'}>Join us today!</ReactStripeCheckout>
         <br />
