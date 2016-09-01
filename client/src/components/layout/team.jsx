@@ -4,10 +4,7 @@ const Team = React.createClass({
   render: function() {
     return (
       <div className="panel-body">
-        <h1 className="feature">Team Mewtwo</h1>
-        <p className="text-center">
-          The best team ever!
-        </p>
+        <h1 className="feature">Team</h1>
         <div className="media">
           <div className="media-left">
             <img className="media-object img-circle" src="https://s32.postimg.org/dmi9webdt/mark.jpg" alt="" />

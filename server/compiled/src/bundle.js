@@ -74,11 +74,11 @@ module.exports =
 
 	var _stats2 = _interopRequireDefault(_stats);
 
-	var _logout = __webpack_require__(264);
+	var _logout = __webpack_require__(266);
 
 	var _logout2 = _interopRequireDefault(_logout);
 
-	var _app = __webpack_require__(265);
+	var _app = __webpack_require__(267);
 
 	var _app2 = _interopRequireDefault(_app);
 
@@ -86,43 +86,43 @@ module.exports =
 
 	var _jobs2 = _interopRequireDefault(_jobs);
 
-	var _dashboard = __webpack_require__(268);
+	var _dashboard = __webpack_require__(270);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _signupForm = __webpack_require__(271);
+	var _signupForm = __webpack_require__(273);
 
 	var _signupForm2 = _interopRequireDefault(_signupForm);
 
-	var _loginForm = __webpack_require__(273);
+	var _loginForm = __webpack_require__(275);
 
 	var _loginForm2 = _interopRequireDefault(_loginForm);
 
-	var _search = __webpack_require__(258);
+	var _search = __webpack_require__(260);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _results = __webpack_require__(260);
+	var _results = __webpack_require__(262);
 
 	var _results2 = _interopRequireDefault(_results);
 
-	var _advancedSearch = __webpack_require__(262);
+	var _advancedSearch = __webpack_require__(264);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
-	var _premium = __webpack_require__(275);
+	var _premium = __webpack_require__(277);
 
 	var _premium2 = _interopRequireDefault(_premium);
 
-	var _contact = __webpack_require__(279);
+	var _contact = __webpack_require__(281);
 
 	var _contact2 = _interopRequireDefault(_contact);
 
-	var _about = __webpack_require__(280);
+	var _about = __webpack_require__(282);
 
 	var _about2 = _interopRequireDefault(_about);
 
-	var _team = __webpack_require__(281);
+	var _team = __webpack_require__(283);
 
 	var _team2 = _interopRequireDefault(_team);
 
@@ -25358,7 +25358,7 @@ module.exports =
 	            _react2.default.createElement(
 	              _reactRouter.Link,
 	              { to: '/team' },
-	              'Team Mewtwo'
+	              'Team'
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -25415,15 +25415,15 @@ module.exports =
 
 	var _jobs2 = _interopRequireDefault(_jobs);
 
-	var _search = __webpack_require__(258);
+	var _search = __webpack_require__(260);
 
 	var _search2 = _interopRequireDefault(_search);
 
-	var _results = __webpack_require__(260);
+	var _results = __webpack_require__(262);
 
 	var _results2 = _interopRequireDefault(_results);
 
-	var _advancedSearch = __webpack_require__(262);
+	var _advancedSearch = __webpack_require__(264);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
@@ -25711,13 +25711,13 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
-	var _jobsList = __webpack_require__(256);
+	var _jobsList = __webpack_require__(258);
 
 	var _jobsList2 = _interopRequireDefault(_jobsList);
 
-	var _search = __webpack_require__(258);
+	var _search = __webpack_require__(260);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -35820,11 +35820,11 @@ module.exports =
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _hoistNonReactStatics = __webpack_require__(201);
+	var _hoistNonReactStatics = __webpack_require__(255);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(166);
+	var _invariant = __webpack_require__(256);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -37274,6 +37274,121 @@ module.exports =
 /* 255 */
 /***/ function(module, exports) {
 
+	/**
+	 * Copyright 2015, Yahoo! Inc.
+	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+	 */
+	'use strict';
+
+	var REACT_STATICS = {
+	    childContextTypes: true,
+	    contextTypes: true,
+	    defaultProps: true,
+	    displayName: true,
+	    getDefaultProps: true,
+	    mixins: true,
+	    propTypes: true,
+	    type: true
+	};
+
+	var KNOWN_STATICS = {
+	    name: true,
+	    length: true,
+	    prototype: true,
+	    caller: true,
+	    arguments: true,
+	    arity: true
+	};
+
+	var isGetOwnPropertySymbolsAvailable = typeof Object.getOwnPropertySymbols === 'function';
+
+	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent, customStatics) {
+	    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+	        var keys = Object.getOwnPropertyNames(sourceComponent);
+
+	        /* istanbul ignore else */
+	        if (isGetOwnPropertySymbolsAvailable) {
+	            keys = keys.concat(Object.getOwnPropertySymbols(sourceComponent));
+	        }
+
+	        for (var i = 0; i < keys.length; ++i) {
+	            if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]] && (!customStatics || !customStatics[keys[i]])) {
+	                try {
+	                    targetComponent[keys[i]] = sourceComponent[keys[i]];
+	                } catch (error) {
+
+	                }
+	            }
+	        }
+	    }
+
+	    return targetComponent;
+	};
+
+
+/***/ },
+/* 256 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 */
+
+	'use strict';
+
+	/**
+	 * Use invariant() to assert state which your program assumes to be true.
+	 *
+	 * Provide sprintf-style format (only %s is supported) and arguments
+	 * to provide information about what broke and what you were
+	 * expecting.
+	 *
+	 * The invariant message will be stripped in production, but the invariant
+	 * will remain to ensure logic does not differ in production.
+	 */
+
+	var NODE_ENV = process.env.NODE_ENV;
+
+	var invariant = function(condition, format, a, b, c, d, e, f) {
+	  if (NODE_ENV !== 'production') {
+	    if (format === undefined) {
+	      throw new Error('invariant requires an error message argument');
+	    }
+	  }
+
+	  if (!condition) {
+	    var error;
+	    if (format === undefined) {
+	      error = new Error(
+	        'Minified exception occurred; use the non-minified dev environment ' +
+	        'for the full error message and additional helpful warnings.'
+	      );
+	    } else {
+	      var args = [a, b, c, d, e, f];
+	      var argIndex = 0;
+	      error = new Error(
+	        format.replace(/%s/g, function() { return args[argIndex++]; })
+	      );
+	      error.name = 'Invariant Violation';
+	    }
+
+	    error.framesToPop = 1; // we don't care about invariant's own frame
+	    throw error;
+	  }
+	};
+
+	module.exports = invariant;
+
+
+/***/ },
+/* 257 */
+/***/ function(module, exports) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -37311,7 +37426,7 @@ module.exports =
 	}
 
 /***/ },
-/* 256 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37324,7 +37439,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _jobsItem = __webpack_require__(257);
+	var _jobsItem = __webpack_require__(259);
 
 	var _jobsItem2 = _interopRequireDefault(_jobsItem);
 
@@ -37346,7 +37461,7 @@ module.exports =
 	exports.default = JobsList;
 
 /***/ },
-/* 257 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37422,7 +37537,7 @@ module.exports =
 	exports.default = JobsItem;
 
 /***/ },
-/* 258 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37447,9 +37562,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
-	var _searchInput = __webpack_require__(259);
+	var _searchInput = __webpack_require__(261);
 
 	var _searchInput2 = _interopRequireDefault(_searchInput);
 
@@ -37582,7 +37697,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Search);
 
 /***/ },
-/* 259 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37634,7 +37749,7 @@ module.exports =
 	exports.default = SearchInput;
 
 /***/ },
-/* 260 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37649,7 +37764,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _d = __webpack_require__(261);
+	var _d = __webpack_require__(263);
 
 	var _d2 = _interopRequireDefault(_d);
 
@@ -37659,9 +37774,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
-	var _search = __webpack_require__(258);
+	var _search = __webpack_require__(260);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -37905,7 +38020,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Results);
 
 /***/ },
-/* 261 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;!function() {
@@ -47464,7 +47579,7 @@ module.exports =
 	}();
 
 /***/ },
-/* 262 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47489,11 +47604,11 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
 	var _auth = __webpack_require__(221);
 
-	var _advanceSearchInput = __webpack_require__(263);
+	var _advanceSearchInput = __webpack_require__(265);
 
 	var _advanceSearchInput2 = _interopRequireDefault(_advanceSearchInput);
 
@@ -47681,7 +47796,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AdvancedSearch);
 
 /***/ },
-/* 263 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47791,7 +47906,7 @@ module.exports =
 	exports.default = AdvancedSearchInput;
 
 /***/ },
-/* 264 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47850,7 +47965,7 @@ module.exports =
 	exports.default = Logout;
 
 /***/ },
-/* 265 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47873,21 +47988,21 @@ module.exports =
 
 	var _auth = __webpack_require__(221);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
 	var _login = __webpack_require__(225);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _main = __webpack_require__(266);
+	var _main = __webpack_require__(268);
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _cloud = __webpack_require__(267);
+	var _cloud = __webpack_require__(269);
 
 	var _cloud2 = _interopRequireDefault(_cloud);
 
-	var _search = __webpack_require__(258);
+	var _search = __webpack_require__(260);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -47970,7 +48085,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
 /***/ },
-/* 266 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -47993,6 +48108,16 @@ module.exports =
 	      "div",
 	      null,
 	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "Dear User,"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "Due to our site's recent launch, there is only meaningful data for javascript technologies in Boston, MA. Please search JS tech stacks in Boston to fully appreciate the site's features including data visualization. More cities and tech stacks are on the way!"
+	      ),
+	      _react2.default.createElement(
 	        "h1",
 	        { className: "feature" },
 	        "Stack Salaries"
@@ -48009,7 +48134,7 @@ module.exports =
 	exports.default = Main;
 
 /***/ },
-/* 267 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48035,7 +48160,7 @@ module.exports =
 	exports.default = Cloud;
 
 /***/ },
-/* 268 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48060,15 +48185,15 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
 	var _auth = __webpack_require__(221);
 
-	var _flash = __webpack_require__(269);
+	var _flash = __webpack_require__(271);
 
 	var _flash2 = _interopRequireDefault(_flash);
 
-	var _dashboardDataInput = __webpack_require__(270);
+	var _dashboardDataInput = __webpack_require__(272);
 
 	var _dashboardDataInput2 = _interopRequireDefault(_dashboardDataInput);
 
@@ -48317,7 +48442,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Dashboard);
 
 /***/ },
-/* 269 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -48375,7 +48500,7 @@ module.exports =
 	exports.default = Flash;
 
 /***/ },
-/* 270 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48522,7 +48647,7 @@ module.exports =
 	exports.default = DataInput;
 
 /***/ },
-/* 271 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48547,9 +48672,9 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
-	var _signupInput = __webpack_require__(272);
+	var _signupInput = __webpack_require__(274);
 
 	var _signupInput2 = _interopRequireDefault(_signupInput);
 
@@ -48677,7 +48802,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SignForm);
 
 /***/ },
-/* 272 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48819,7 +48944,7 @@ module.exports =
 	exports.default = SignupInput;
 
 /***/ },
-/* 273 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48844,13 +48969,13 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _actionCreator = __webpack_require__(255);
+	var _actionCreator = __webpack_require__(257);
 
-	var _flash = __webpack_require__(269);
+	var _flash = __webpack_require__(271);
 
 	var _flash2 = _interopRequireDefault(_flash);
 
-	var _loginInput = __webpack_require__(274);
+	var _loginInput = __webpack_require__(276);
 
 	var _loginInput2 = _interopRequireDefault(_loginInput);
 
@@ -48858,7 +48983,7 @@ module.exports =
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _advancedSearch = __webpack_require__(262);
+	var _advancedSearch = __webpack_require__(264);
 
 	var _advancedSearch2 = _interopRequireDefault(_advancedSearch);
 
@@ -49010,7 +49135,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LoginForm);
 
 /***/ },
-/* 274 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49106,19 +49231,6 @@ module.exports =
 	            'Sign Up'
 	          )
 	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { id: 'small-link', className: 'row' },
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          _react2.default.createElement(
-	            'a',
-	            { href: '/auth/github/' },
-	            'Sign In With Github'
-	          )
-	        )
 	      )
 	    )
 	  );
@@ -49127,7 +49239,7 @@ module.exports =
 	exports.default = LoginInput;
 
 /***/ },
-/* 275 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49152,11 +49264,11 @@ module.exports =
 
 	var _redux = __webpack_require__(236);
 
-	var _reactFileInput = __webpack_require__(276);
+	var _reactFileInput = __webpack_require__(278);
 
 	var _reactFileInput2 = _interopRequireDefault(_reactFileInput);
 
-	var _stripe = __webpack_require__(277);
+	var _stripe = __webpack_require__(279);
 
 	var _stripe2 = _interopRequireDefault(_stripe);
 
@@ -49248,7 +49360,8 @@ module.exports =
 	          { className: 'text-center' },
 	          ' We\'ve helped thousands of people find their dream jobs. '
 	        ),
-	        _react2.default.createElement('img', { className: 'recruitImg', src: 'http://i.imgur.com/jtVH5QF.png' }),
+	        _react2.default.createElement('img', { className: 'recruitImg', src: 'https://i.imgur.com/Fc4yeRG.jpg' }),
+	        _react2.default.createElement('br', null),
 	        _react2.default.createElement(
 	          _stripe2.default,
 	          { className: 'StripeCheckout btn btn-default center-block', token: function token() {
@@ -49300,7 +49413,7 @@ module.exports =
 	exports.default = Premium;
 
 /***/ },
-/* 276 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
@@ -49371,7 +49484,7 @@ module.exports =
 
 
 /***/ },
-/* 277 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49386,7 +49499,7 @@ module.exports =
 	  }return target;
 	};
 	var React = __webpack_require__(2);
-	var ReactScriptLoaderMixin = __webpack_require__(278).ReactScriptLoaderMixin;
+	var ReactScriptLoaderMixin = __webpack_require__(280).ReactScriptLoaderMixin;
 	var ReactStripeCheckout = React.createClass({
 
 	  displayName: 'ReactStripeCheckout',
@@ -49603,7 +49716,7 @@ module.exports =
 	module.exports = ReactStripeCheckout;
 
 /***/ },
-/* 278 */
+/* 280 */
 /***/ function(module, exports) {
 
 	
@@ -49727,7 +49840,7 @@ module.exports =
 
 
 /***/ },
-/* 279 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49895,7 +50008,7 @@ module.exports =
 	exports.default = Contact;
 
 /***/ },
-/* 280 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49939,7 +50052,7 @@ module.exports =
 	exports.default = About;
 
 /***/ },
-/* 281 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -49964,12 +50077,7 @@ module.exports =
 	      _react2.default.createElement(
 	        "h1",
 	        { className: "feature" },
-	        "Team Mewtwo"
-	      ),
-	      _react2.default.createElement(
-	        "p",
-	        { className: "text-center" },
-	        "The best team ever!"
+	        "Team"
 	      ),
 	      _react2.default.createElement(
 	        "div",

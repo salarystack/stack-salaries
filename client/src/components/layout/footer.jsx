@@ -9,7 +9,7 @@ const Footer = React.createClass({
           <ul className="list-inline">
             <li><Link to='/'>Home</Link> </li>
             <li><Link to='/about'>About</Link> </li>
-            <li><Link to='/team'>Team Mewtwo</Link></li>
+            <li><Link to='/team'>Team</Link></li>
             <li><Link to='/contact'>Contact</Link></li>
           </ul>
           <p className="lead">&copy; 2016 Stack Salaries</p>
